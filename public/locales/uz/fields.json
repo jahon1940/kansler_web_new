@@ -1,0 +1,145 @@
+{
+  "title": { "label": "Nomi / Artikuli", "placeholder": "Nom yoki artikul kiriting" },
+  "price": {
+    "label": "Narx"
+  },
+  "price_from": {
+    "label": "Narx",
+    "placeholder": "dan"
+  },
+  "price_to": {
+    "label": "Narx",
+    "placeholder": "gacha",
+    "validation": "Maks. narx min. narxdan kam bo‘lmasligi kerak."
+  },
+  "category": {
+    "label": "Kategoriya",
+    "placeholder": "Kategoriyani tanlang"
+  },
+  "brand": {
+    "label": "Brend",
+    "placeholder": "Brendni tanlang"
+  },
+  "brands": { "label": "Buyurilgan brendlar" },
+  "order_by": {
+    "label": "Saralash",
+    "placeholder": "Tanlang"
+  },
+  "organization": {
+    "label": "Tashkilot",
+    "label2": "Yetkazib beruvchi",
+    "placeholder": "Tashkilotni tanlang"
+  },
+  "vendor_code": {
+    "label": "Artikul"
+  },
+  "measure": {
+    "label": "O'lchov birligi",
+    "label2": "Birlik"
+  },
+  "made_in": {
+    "label": "Ishlab chiqaruvchi davlat"
+  },
+  "classifier_code": {
+    "label": "Klassifikator kodi"
+  },
+  "classifier_title": {
+    "label": "Klassifikator"
+  },
+  "packagename": {
+    "label": "Qadoq turi"
+  },
+  "packagecode": {
+    "label": "Qadoq kodi"
+  },
+  "quantity_in_box": {
+    "label": "Qadoq ichida"
+  },
+  "description": {
+    "label": "Tavsif"
+  },
+  "username": {
+    "placeholder": "Foydalanuvchi nomi",
+    "required": "Iltimos, foydalanuvchi nomini kiriting!",
+    "min": "Foydalanuvchi nomi kamida 4 ta belgi bo‘lishi kerak!"
+  },
+  "password": {
+    "placeholder": "Parol",
+    "required": "Iltimos, parolni kiriting!",
+    "min": "Parol kamida 8 ta belgi bo‘lishi kerak!"
+  },
+  "company": {
+    "placeholder": "Kompaniyani tanlang"
+  },
+  "companyname": {
+    "label": "Kompaniya"
+  },
+  "companytype": {
+    "label": "Mijoz turi"
+  },
+  "managername": {
+    "label": "Sizning menejeringiz",
+    "label2": "Menejer"
+  },
+  "managerphone": {
+    "label": "Aloqa telefoni",
+    "label2": "Telefon"
+  },
+  "addresses": {
+    "label": "Savdo nuqtasi"
+  },
+  "region": {
+    "label": "Hudud"
+  },
+  "tin": {
+    "label": "STIR"
+  },
+  "contract": {
+    "label": "Shartnoma",
+    "placeholder": "Shartnomani tanlang",
+    "number": "Shartnoma № {{value}}"
+  },
+  "name": {
+    "label": "Nomi"
+  },
+  "phone": {
+    "label": "Telefon"
+  },
+  "agentname": {
+    "label": "Sizning agentingiz"
+  },
+  "limit": {
+    "label": "Limit"
+  },
+  "bonus": {
+    "label": "Bonus"
+  },
+  "total": {
+    "label": "Summa",
+    "label2": "Jami"
+  },
+  "number": {
+    "label": "To'lov raqami"
+  },
+  "date": {
+    "label": "Sana"
+  },
+  "total_amount": {
+    "label": "Umumiy hisob"
+  },
+  "rating": {
+    "label": "Sizning bahongiz"
+  },
+  "order": {
+    "label": "Buyurtma"
+  },
+  "quantity": {
+    "label": "Miqdori"
+  },
+  "retailer_price": {
+    "label": "Chakana savdo narxi"
+  },
+  "order_count": {
+    "label": "Buyurtma soni"
+  }
+}

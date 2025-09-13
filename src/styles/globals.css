@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    background-color: #eef1f7;
+  }
+
+  html.dark {
+    color-scheme: dark;
+    @apply bg-dsecondary;
+  }
+
+  * {
+    scrollbar-width: thin;
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+  }
+}
+
+@layer components {
+  .custom-container {
+    max-width: 1400px !important;
+    margin: 0 auto;
+    padding: 0 10px;
+  }
+
+  .rich-text {
+    @apply text-black dark:text-white;
+
+    h1 {
+      @apply text-3xl mb-4;
+    }
+
+    h2 {
+      @apply text-2xl mt-6 mb-3;
+    }
+
+    p {
+      @apply mb-4 leading-relaxed;
+    }
+
+    ul {
+      @apply list-disc pl-6 mb-4;
+    }
+
+    a {
+      @apply text-primary underline;
+    }
+
+    strong {
+      @apply font-semibold;
+    }
+  }
+}
+
+@layer utilities {
+}
+
+.ant-modal .ant-modal-close {
+  top: 10px !important;
+  right: 10px !important;
+  height: 48px !important;
+  width: 48px !important;
+  border-radius: 12px !important;
+}
+
+.ant-modal-root .ant-modal-mask {
+  backdrop-filter: blur(2px);
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.ant-btn-icon {
+  display: flex !important;
+  align-items: center !important;
+}
+
+.cblur {
+  filter: blur(30px);
+  transition: filter 0.1s ease-in;
+}
+
+.remove-blur {
+  filter: blur(0px);
+  transition: filter 0.1s ease-in;
+}
+
+.custom-table-border-width .ant-table {
+  border-width: 2px !important; /* Adjust as needed */
+  border-color: #f0f0f0 !important;
+}
+
+.custom-table-border-width .ant-table td,
+.custom-table-border-width .ant-table th {
+  border-width: 2px !important; /* Adjust individual cell borders */
+  border-color: #f0f0f0 !important;
+}
+
+.react-multiple-carousel__arrow {
+  background-color: #e6e8ed !important;
+  border: 1px solid rgba(54, 55, 64, 0.15) !important;
+  min-width: 40px !important;
+  min-height: 40px !important;
+  z-index: 2 !important;
+}
+
+.react-multiple-carousel__arrow--left {
+  left: calc(2% + 1px) !important;
+}
+
+.react-multiple-carousel__arrow--right {
+  right: calc(2% + 1px) !important;
+}
+
+.react-multiple-carousel__arrow:before {
+  color: black !important;
+}
+
+.react-multi-carousel-dot--active button {
+  background-color: #4b68ff !important;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

@@ -1,0 +1,145 @@
+{
+  "title": { "label": "Название / Артикул", "placeholder": "Введите название или артикул" },
+  "price": {
+    "label": "Цена"
+  },
+  "price_from": {
+    "label": "Цена",
+    "placeholder": "от"
+  },
+  "price_to": {
+    "label": "Цена",
+    "placeholder": "до",
+    "validation": "Макс. цена не может быть меньше мин."
+  },
+  "category": {
+    "label": "Категория",
+    "placeholder": "Выберите категорию"
+  },
+  "brand": {
+    "label": "Бренд",
+    "placeholder": "Выберите бренд"
+  },
+  "brands": { "label": "Заказанные бренды" },
+  "order_by": {
+    "label": "Сортировать по",
+    "placeholder": "Выберите"
+  },
+  "organization": {
+    "label": "Организация",
+    "label2": "Поставщик",
+    "placeholder": "Выберите организацию"
+  },
+  "vendor_code": {
+    "label": "Артикул"
+  },
+  "measure": {
+    "label": "Ед. измерение",
+    "label2": "Ед."
+  },
+  "made_in": {
+    "label": "Страна производства"
+  },
+  "classifier_code": {
+    "label": "Код классификатора"
+  },
+  "classifier_title": {
+    "label": "Классификатор"
+  },
+  "packagename": {
+    "label": "Тип упаковки"
+  },
+  "packagecode": {
+    "label": "Код упаковки"
+  },
+  "quantity_in_box": {
+    "label": "В упаковке"
+  },
+  "description": {
+    "label": "Описание"
+  },
+  "username": {
+    "placeholder": "Имя пользователя",
+    "required": "Пожалуйста, введите имя пользователя!",
+    "min": "Имя пользователя должно содержать минимум 4 символа!"
+  },
+  "password": {
+    "placeholder": "Пароль",
+    "required": "Пожалуйста, введите пароль!",
+    "min": "Пароль должен содержать минимум 8 символов!"
+  },
+  "company": {
+    "placeholder": "Выберите компанию"
+  },
+  "companyname": {
+    "label": "Компания"
+  },
+  "companytype": {
+    "label": "Тип клиента"
+  },
+  "managername": {
+    "label": "Ваш Менеджер",
+    "label2": "Менеджер"
+  },
+  "managerphone": {
+    "label": "Телефон для связи",
+    "label2": "Телефон"
+  },
+  "addresses": {
+    "label": "Торг. точка"
+  },
+  "region": {
+    "label": "Регион"
+  },
+  "tin": {
+    "label": "ИНН"
+  },
+  "contract": {
+    "label": "Договор",
+    "placeholder": "Выберите Договор",
+    "number": "Договор № {{value}}"
+  },
+  "name": {
+    "label": "Название"
+  },
+  "phone": {
+    "label": "Телефон"
+  },
+  "agentname": {
+    "label": "Ваш Агент"
+  },
+  "limit": {
+    "label": "Лимит"
+  },
+  "bonus": {
+    "label": "Бонус"
+  },
+  "total": {
+    "label": "Сумма",
+    "label2": "Итого"
+  },
+  "number": {
+    "label": "Номер платежа"
+  },
+  "date": {
+    "label": "Дата"
+  },
+  "total_amount": {
+    "label": "Общая Сумма"
+  },
+  "rating": {
+    "label": "Ваша оценка"
+  },
+  "order": {
+    "label": "Заказ"
+  },
+  "quantity": {
+    "label": "Количество"
+  },
+  "retailer_price": {
+    "label": "Розничная цена"
+  },
+  "order_count": {
+    "label": "Количество заказа"
+  }
+}

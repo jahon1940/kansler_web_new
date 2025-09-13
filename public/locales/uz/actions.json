@@ -1,0 +1,15 @@
+{
+  "reset": "Qayta sozlash",
+  "search": "Qidirish",
+  "action": "Amal",
+  "edit": "O'zgartirish",
+  "login": "Kirish",
+  "logout": "Chiqish",
+  "checkout": "Rasmiylashtirish",
+  "continue": "Davom etish",
+  "add-to-cart": "Savatga qo‘shish",
+  "remove-from-cart": "Buyurtma savatidan olib tashlash",
+  "submit-rating": "Baholash",
+  "go-to-main": "Bosh sahifaga",
+  "new-chat": "Yangi chat"
+}

@@ -1,0 +1,139 @@
+{
+  "welcome": "Xush kelibsiz!",
+  "view-style": "Ko'rinish turi",
+  "uzs": "so'm",
+  "characteristics": "Xususiyatlari",
+  "promotions": "Aksiyalar",
+  "bestsellers": "Eng ko‘p sotilganlar",
+  "new-arrivals": "Yangi mahsulotlar",
+  "popular": "Ommabop",
+  "product-details": "Mahsulot haqida batafsil",
+  "limit-bonuses": "Limit / Bonus",
+  "debt-history": "Qarzdorlik / To'lov tarixi",
+  "trading-points": "Savdo nuqtalari",
+
+  "payment-history": "To'lov tarixi",
+  "debt": "Qarzdorlik",
+  "total-debt": "Umumiy qarzdorlik",
+  "select-contract": "Qarzdorlikni ko'rish uchun shartnomani tanlang",
+  "debt_15_days": "15 kun",
+  "debt_16_45_days": "16-45 kun",
+  "debt_46_60_days": "46-60 kun",
+  "debt_61_90_days": "61-90 kun",
+  "debt_91_120_days": "91-120 kun",
+  "debt_over_120_days": "120 kundan ortiq",
+  "min-order-quantity": "Minimal buyurtma",
+  "information": "Ma'lumot",
+  "recommended-for-sale": "sotish uchun tavsiya etiladi",
+
+  "all-products": "Barcha mahsulotlar",
+  "order-info": "Buyurtma haqida ma'lumot",
+  "order-comment": "Buyurtma izohi",
+  "amount-due": "To'lov uchun",
+  "favorites": "Sevimlilar",
+  "out-of-stock": "Mavjud emas",
+  "similar-products": "O'xshash mahsulotlar",
+  "choose-category": "Kategoriya tanlang, mahsulotlarni ko'rish uchun",
+  "order-created-title": "Buyurtma muvaffaqiyatli rasmiylashtirildi",
+  "order-created-description": "Buyurtma raqamingiz {{value}}. Buyurtma holati haqida ma'lumot telefon raqamingizga yuboriladi",
+  "order-products": "Buyurtma mahsulotlari",
+  "rate-service": "Ish sifatini yaxshilash uchun menejerning xizmat ko‘rsatish darajasini baholang",
+  "added": "Qo'shilgan",
+  "remaining": "Qolgan",
+  "ordered": "Buyurilgan",
+  "in-the-cart": "Savatda",
+  "its-remaining": "{{value}} da qolgan",
+  "your-remaining": "Sizda {{value}} da qolgan",
+  "ordered-via-1c": "1C da buyurtma berilgan",
+  "ordered-via-website": "saytda buyurtma berilgan",
+  "profit": "Foyda (chegirma)",
+  "lost-profit": "Yo‘qotilgan foyda (chegirma)",
+
+  "greeting": {
+    "line1": "Salom",
+    "line2": "Men hoomo sun’iy intellektiman."
+  },
+  "chat-intro-learning": "Tez orada sizga kerakli mahsulotlarni topishda yordam bera olaman. Hozircha esa, yaxshiroq bo‘lishim uchun o‘rganishni davom ettiraman.",
+  "chat-intro-info": "Agar sizda savollar bo‘lsa yoki ofis buyumlari haqida ko‘proq bilmoqchi bo‘lsangiz, bemalol menga murojaat qiling. Men har doim yordam berishga tayyorman!",
+  "chat-auth-required": "Boshlash uchun iltimos, avtorizatsiyadan o'tishingiz kerak",
+  "chat-input-placeholder": "Xabaringizni yozing...",
+  "chat-suggestions": {
+    "increase_sales": "Savdoni qanday oshirish mumkin?",
+    "top_products": "Qaysi mahsulotlar eng ko‘p sotiladi?",
+    "product_types": "Saytda qanday ruchkalar bor?",
+    "new_arrivals": "Yangi kelgan mahsulotlar haqida aytib bering"
+  },
+  "chat-warning": "(Test versiya)",
+  "chat-thinking": "O‘ylayapti",
+  "chat-error-message": "Kechirasiz, so‘rovingizni qayta ishlanmadi. Iltimos, keyinroq yana urinib ko‘ring.",
+
+  "theme": {
+    "light": "Kunduzgi",
+    "dark": "Tungi"
+  },
+
+  "not_found": {
+    "title": "Siz qidirgan narsani topa olmadik",
+    "subtitle": "Ehtimol, bizda hozircha bunday mahsulot yo'q",
+    "suggestion": "Qayta o'rnatib, yana filtrlashga harakat qiling",
+    "reset": "Qayta o'rnatish"
+  },
+
+  "favorites_not_found": {
+    "title": "Sevimli mahsulotlar ro'yxati bo'sh!",
+    "subtitle": "Bu yerda yoqqan mahsulotlaringizni ko'rish uchun ularni sevimli mahsulotlar ro'yxatiga qo'shing!"
+  },
+
+  "orders_not_found": {
+    "title": "Buyurtmalar ro'yxati bo'sh!",
+    "subtitle": "Buyurtmangizni bu yerda ko'rish uchun avval uni rasmiylashtiring!"
+  },
+
+  "shopping_cart_not_found": {
+    "title": "Savatingiz bo'sh!",
+    "subtitle": "Mahsulotlarni savatga qo'shing va ularni shu yerda ko'ring!"
+  },
+
+  "category_not_found": {
+    "page_restricted": "Ushbu sahifa faqat bosh kontragent uchun ochiq",
+    "page_info": "Ushbu sahifada siz quyidagilarni ko‘rishingiz mumkin:",
+    "limits_bonuses": "Limitlar/Bonuslar",
+    "debts_payment_history": "Qarzdorlik/To‘lov tarixi",
+    "list_of_trade_points": "Savdo nuqtalari ro‘yxati",
+    "select_organization": "Ma’lumot olish uchun tashkilotni va kerakli bo‘limni tanlang!"
+  },
+
+  "join_community": {
+    "title": "Kansler professional jamiyatining bir qismi bo'lishni xohlaysizmi?",
+    "subtitle": "Kompaniya xodimi bilan bog'laning"
+  },
+
+  "login_page": { "title": "Kantselyariya dunyosi shu yerdan boshlanadi!" },
+
+  "share": {
+    "default-title": "Bunga qarang!",
+    "modal-title": "Havolani ulashing",
+    "copy-button": "Havolani nusxalash",
+    "telegram-button": "Telegram orqali ulashish",
+    "copy-success": "Havola buferga nusxalandi!",
+    "copy-error": "Havolani nusxalash muvaffaqiyatsiz tugadi"
+  },
+
+  "order-by-options": {
+    "created_at": "Sana bo‘yicha",
+    "alfabetic": "Alifbo bo‘yicha",
+    "price": "Arzonroq",
+    "-price": "Qimmatroq",
+    "promotion": "Kun hitlari",
+    "discount": "Aksiyalar",
+    "new": "Yangi mahsulotlar",
+    "bestseller": "Ommabop",
+    "latest": "Yaqinda qo‘shilgan",
+    "category_group": "Kategoriyalar bo‘yicha"
+  },
+
+  "not-found-page": {
+    "title": "Bunday sahifa mavjud emas",
+    "description": "Ehtimol noto‘g‘ri havolani bosdingiz yoki sahifa olib tashlangan."
+  }
+}
