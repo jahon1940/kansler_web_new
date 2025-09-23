@@ -19,7 +19,7 @@ export default function MobileDownload() {
 
       <div className="text-center text-black dark:text-white text-[14px] leading-[20px] mb-7">
         <p>Для мобильной версии скачайте</p>
-        <p>Мобильное приложение Mirel</p>
+        <p>Мобильное приложение Kansler</p>
       </div>
 
       <div className="flex flex-col space-y-3 w-full max-w-[155px]">

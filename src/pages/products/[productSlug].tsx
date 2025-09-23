@@ -62,7 +62,7 @@ const Page = ({ seo }: { seo: IProduct }) => {
           />
           <meta property="og:image:width" content="600" />
           <meta property="og:image:height" content="315" />
-          <meta property="og:site_name" content="Mirel.uz" />
+          <meta property="og:site_name" content="Kansler.uz" />
         </Head>
       ) : null}
 
