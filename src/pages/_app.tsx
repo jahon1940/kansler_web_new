@@ -103,7 +103,7 @@ function App({ Component, pageProps }: AppProps) {
             <AntdApp>
               {contextHolder}
               <Head>
-                <title>Mirel - Канцтовары оптом, Deli torg, Signum, Grand trading.</title>
+                <title>Kansler - Канцтовары оптом, Deli torg, Signum, Grand trading.</title>
                 <meta
                   name="description"
                   content="Присоединяйтесь к сообществу оптовых покупателей и оцените удобство онлайн-заказов канцелярии. Всё для бизнеса — в одном месте и с доставкой."
