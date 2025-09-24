@@ -10,7 +10,7 @@ import { formatAmount } from '@/utils/format-amount'
 import { addToCart, deleteFromCart } from '@/views/shopping-cart/services'
 
 import AddOutlineIcon from '../icons/add-outline'
-import OutOfStock from './out-of-stock'
+import MadeToOrder from './made-to-order'
 import MinusOutlineIcon from '../icons/minus-outline'
 import ShoppingCartOutlineIcon from '../icons/shopping-cart-outline'
 
@@ -173,7 +173,7 @@ const CartInputStepper: FC<IProps> = ({
           </Space.Compact>
         )}
 
-        {!isInStock ? <OutOfStock /> : null}
+        {!isInStock ? <MadeToOrder /> : null}
 
         {isInCart ? (
           longButton ? (

@@ -13,9 +13,9 @@ import { Media } from '@/config/media-styles-config'
 import useViewTypeStore from '../store/use-view-type-store'
 
 import Loader from '@/components/shared/loader'
-import OutOfStock from '@/components/shared/out-of-stock'
 import BrandTableRow from '../components/brand-table-row'
 import ProductCard from '@/components/shared/product-card'
+import MadeToOrder from '@/components/shared/made-to-order'
 import NoProductsFound from '../components/no-products-found'
 import MeasureTableRow from '../components/measure-table-row'
 import ProductsTableCard from '../components/products-table-card'
@@ -194,7 +194,7 @@ const ProductsList: FC<{ form: FormInstance<Record<string, any>> | undefined }> 
               isInStock={record?.max_quantity > 0}
             />
           ) : (
-            <OutOfStock />
+            <MadeToOrder />
           )
         }
       },

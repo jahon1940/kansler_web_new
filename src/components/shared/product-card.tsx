@@ -9,7 +9,7 @@ import { formatAmount } from '@/utils/format-amount'
 import useProductModalStore from '@/store/product-modal-store'
 
 import CImage from '../ui/cimage'
-import OutOfStock from './out-of-stock'
+import MadeToOrder from './made-to-order'
 import FavoriteButton from './favorite-button'
 import CartInputStepper from './cart-input-stepper'
 import ProductDetailedModal from './product-detailed-modal'
@@ -133,7 +133,7 @@ const ProductCard: FC<IProps> = (props) => {
               isInStock={props?.max_quantity > 0}
             />
           ) : (
-            <OutOfStock />
+            <MadeToOrder />
           )
         ) : null}
       </div>

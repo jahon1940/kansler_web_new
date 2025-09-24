@@ -16,8 +16,8 @@ import useViewTypeStore from '@/views/search/store/use-view-type-store'
 import useAuthStore from '@/store/auth-store'
 import Loader from '@/components/shared/loader'
 import CategoryChips from '../components/category-chips'
-import OutOfStock from '@/components/shared/out-of-stock'
 import ProductCard from '@/components/shared/product-card'
+import MadeToOrder from '@/components/shared/made-to-order'
 import CartInputStepper from '@/components/shared/cart-input-stepper'
 // import CartInputStepper from '@/components/shared/cart-input-stepper'
 import BrandTableRow from '@/views/search/components/brand-table-row'
@@ -214,7 +214,7 @@ const ProductsList: FC<{ form: FormInstance<Record<string, any>> | undefined }> 
               isInStock={record?.max_quantity > 0}
             />
           ) : (
-            <OutOfStock />
+            <MadeToOrder />
           )
         }
 

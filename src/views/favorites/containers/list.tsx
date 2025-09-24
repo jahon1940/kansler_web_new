@@ -13,7 +13,7 @@ import { Media } from '@/config/media-styles-config'
 import useViewTypeStore from '@/views/search/store/use-view-type-store'
 
 import Loader from '@/components/shared/loader'
-import OutOfStock from '@/components/shared/out-of-stock'
+import MadeToOrder from '@/components/shared/made-to-order'
 import ProductCard from '@/components/shared/product-card'
 import NoFavoritesFound from '../components/no-favorites-found'
 import CartInputStepper from '@/components/shared/cart-input-stepper'
@@ -181,7 +181,7 @@ const Favorites = () => {
               isInStock={record?.product?.max_quantity > 0}
             />
           ) : (
-            <OutOfStock />
+            <MadeToOrder />
           )
         }
       },

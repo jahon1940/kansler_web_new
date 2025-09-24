@@ -12,7 +12,7 @@ import { formatAmount } from '@/utils/format-amount'
 
 import CImage from '@/components/ui/cimage'
 
-import OutOfStock from '@/components/shared/out-of-stock'
+import MadeToOrder from '@/components/shared/made-to-order'
 import FavoriteButton from '@/components/shared/favorite-button'
 import ShareButtonModal from '@/components/shared/share-button-modal'
 import CartInputStepper from '@/components/shared/cart-input-stepper'
@@ -154,7 +154,7 @@ const ProductsItemView = () => {
                   isInStock={data?.max_quantity > 0}
                 />
               ) : (
-                <OutOfStock />
+                <MadeToOrder />
               )
             ) : null}
           </div>

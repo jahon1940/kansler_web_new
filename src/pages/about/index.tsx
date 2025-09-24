@@ -1,11 +1,12 @@
-import { GetStaticProps } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import { defaultLocale } from '@/config'
 
-import PosterItemPage from '@/views/posters-item'
+import AboutView from '@/views/about'
 
-export const getServerSideProps: GetStaticProps = async ({ locale }) => {
+import type { GetStaticProps } from 'next'
+
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
     props: {
       ...(await serverSideTranslations(locale ?? defaultLocale, ['common', 'fields', 'actions'])),
@@ -14,7 +15,7 @@ export const getServerSideProps: GetStaticProps = async ({ locale }) => {
 }
 
 const Page = () => {
-  return <PosterItemPage />
+  return <AboutView />
 }
 
 export default Page

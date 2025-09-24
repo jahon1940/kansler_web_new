@@ -10,7 +10,7 @@ import { formatAmount } from '@/utils/format-amount'
 
 import Loader from '@/components/shared/loader'
 import BrandTableRow from '../components/brand-table-row'
-import OutOfStock from '@/components/shared/out-of-stock'
+import OutOfStock from '@/components/shared/made-to-order'
 import NoProductsFound from '../components/no-products-found'
 import MeasureTableRow from '../components/measure-table-row'
 import ClickableTableRow from '../components/clickable-table-row'

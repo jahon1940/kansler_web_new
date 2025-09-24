@@ -36,6 +36,9 @@ import type { FC } from 'react'
 import CImage from '../ui/cimage'
 import ChatDrawer from '../shared/chat-drawer'
 import DownloadIcon from '../icons/download'
+import DeliveryIcon from '../icons/delivery'
+import TelegramIcon from '../icons/telegram'
+import { PhoneIcon } from 'lucide-react'
 
 const ThemeSwitcher = dynamic(() => import('../shared/theme-switcher'), { ssr: false })
 
@@ -121,6 +124,18 @@ const Header: FC = () => {
       <div className="bg-[#E0E2E7] dark:bg-dsecondary">
         <div className="custom-container items-center flex gap-2 justify-between py-2">
           <ChatDrawer />
+          <ul className="flex items-center gap-4 flex-1 justify-evenly">
+            <li className="flex items-center gap-2">
+              <PhoneIcon size={16} />
+              +998 (78) 148-44-44
+            </li>
+            <li className="flex items-center gap-2">
+              <TelegramIcon className="text-[18px]" /> @kansler_support_bot
+            </li>
+            <li className="flex items-center gap-2">
+              <DeliveryIcon className="text-[18px]" /> Доставим не позднее 2х дней
+            </li>
+          </ul>
           <div className="items-center flex gap-2 justify-end">
             <Button
             // htmlType="submit"
