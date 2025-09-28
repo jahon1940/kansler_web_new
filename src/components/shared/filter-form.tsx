@@ -3,14 +3,13 @@ import queryString from 'query-string'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { useQueries } from '@tanstack/react-query'
-import { Button, Form, FormInstance, Input, InputNumber, Space } from 'antd'
+import { Button, Form, FormInstance, InputNumber, Space } from 'antd'
 
 import { getBrands } from '@/services'
 import { formatAmount } from '@/utils/format-amount'
-import { getCategories, getOrganizations } from '@/views/search/services'
+import { getCategories } from '@/views/search/services'
 
 import CSelect from '../ui/cselect'
-import SearchNormalOutlineIcon from '../icons/search-normal-outline'
 
 import type { FC } from 'react'
 
@@ -25,12 +24,10 @@ const FilterForm: FC<IProps> = ({ form, removeCategory }) => {
   const organization_id = Form.useWatch('organization_id', form)
 
   const [
-    { data: organizations, isFetching: isOrgFetching },
     { data: brands, isFetching: isBrandFetching },
     { data: categories, isFetching: isCategoryFetching },
   ] = useQueries({
     queries: [
-      { queryKey: ['organizations'], queryFn: () => getOrganizations() },
       {
         queryKey: ['brands', organization_id],
         queryFn: () => getBrands({ page: 1, organization_id, page_size: 100 }),
@@ -79,33 +76,6 @@ const FilterForm: FC<IProps> = ({ form, removeCategory }) => {
       initialValues={{ sortBy: 'date' }}
       className="flex flex-col gap-4 overflow-auto"
     >
-      <Form.Item label={t('fields:title.label')} name="title">
-        <Input
-          placeholder={t('fields:title.placeholder')}
-          variant="filled"
-          suffix={<SearchNormalOutlineIcon className="text-[20px]" />}
-          className="border border-secondary-light/20 dark:bg-dsecondary"
-        />
-      </Form.Item>
-
-      <Form.Item label={t('fields:organization.label')} name="organization_id">
-        <CSelect
-          loading={isOrgFetching}
-          variant="filled"
-          onChange={() => form?.setFieldValue('brands', undefined)}
-          notFoundContent={null}
-          placeholder={t('fields:organization.placeholder')}
-          allowClear
-          className="[&_.ant-select-selector]:border dark:[&_.ant-select-selector]:bg-dsecondary [&_.ant-select-selector]:border-secondary-light/20"
-          options={
-            organizations?.results?.map((val) => ({
-              label: val.name,
-              value: val.id + '',
-            })) || []
-          }
-        />
-      </Form.Item>
-
       <Form.Item label={t('fields:brand.label')} name="brands">
         <CSelect
           loading={isBrandFetching}
