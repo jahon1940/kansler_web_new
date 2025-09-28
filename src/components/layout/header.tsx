@@ -23,22 +23,18 @@ import ProfileBoldIcon from '../icons/profile-bold'
 import Bag2OutlineIcon from '../icons/bag-2-outline'
 import HeartOutlineIcon from '../icons/heart-outline'
 import Home2OutlineIcon from '../icons/home-2-outline'
-import Category2BoldIcon from '../icons/category-2-bold'
 import ProfileOutlineIcon from '../icons/profile-outline'
-import Category2OutlineIcon from '../icons/category-2-outline'
 import ShoppingCartBoldIcon from '../icons/shopping-cart-bold'
 import SearchNormalOutlineIcon from '../icons/search-normal-outline'
 import ShoppingCartOutlineIcon from '../icons/shopping-cart-outline'
 
-import CircleLogo from '../../assets/circle-ai-logo.gif'
-
 import type { FC } from 'react'
-import CImage from '../ui/cimage'
 import ChatDrawer from '../shared/chat-drawer'
 import DownloadIcon from '../icons/download'
 import DeliveryIcon from '../icons/delivery'
 import TelegramIcon from '../icons/telegram'
 import { PhoneIcon } from 'lucide-react'
+import CatalogMenu from '../shared/catalog-menu'
 
 const ThemeSwitcher = dynamic(() => import('../shared/theme-switcher'), { ssr: false })
 
@@ -71,12 +67,12 @@ const Header: FC = () => {
 
   const links = [
     { href: '/', icon: <Home2OutlineIcon />, activeIcon: <Home2BoldIcon />, label: 'Main' },
-    {
-      href: '/catalog',
-      icon: <Category2OutlineIcon />,
-      activeIcon: <Category2BoldIcon />,
-      label: 'Categories',
-    },
+    // {
+    //   href: '/catalog',
+    //   icon: <Category2OutlineIcon />,
+    //   activeIcon: <Category2BoldIcon />,
+    //   label: 'Categories',
+    // },
     {
       href: '/favorites',
       icon: <HeartOutlineIcon />,
@@ -164,6 +160,7 @@ const Header: FC = () => {
                   alt="Logo"
                 />
               </Link>
+              <CatalogMenu />
               <Form
                 className="flex items-center gap-1 flex-1"
                 form={form}
