@@ -66,7 +66,7 @@ const ProductCard: FC<IProps> = (props) => {
     <>
       <div
         className={twMerge(
-          'p-2 bg-white border cursor-pointer dark:bg-dprimary dark:border-dborder hover:border-primary/50 duration-200 rounded-lg flex flex-col',
+          'p-2 bg-white border shadow-lg cursor-pointer dark:bg-dprimary dark:border-dborder hover:border-primary/50 duration-200 rounded-lg flex flex-col',
           props?.small ? 'h-full' : '',
           props?.fixedWidth ? 'w-[245px]' : ''
         )}
