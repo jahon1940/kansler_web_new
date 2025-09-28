@@ -4,7 +4,8 @@
 
 @layer base {
   html {
-    background-color: #eef1f7;
+    /* background-color: #eef1f7; */
+    background-color: white;
   }
 
   html.dark {
@@ -122,8 +123,11 @@
   color: black !important;
 }
 
+.react-multi-carousel-dot button {
+  @apply !border-primary;
+}
 .react-multi-carousel-dot--active button {
-  background-color: #4b68ff !important;
+  @apply !bg-primary;
 }
 
 .no-scrollbar::-webkit-scrollbar {
