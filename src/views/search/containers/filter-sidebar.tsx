@@ -6,7 +6,7 @@ import { useTranslation } from 'next-i18next'
 
 const FilterForm = dynamic(() => import('@/components/shared/filter-form'), { ssr: false })
 
-import ViewTypeButton from '../components/view-type-button'
+// import ViewTypeButton from '../components/view-type-button'
 
 import type { FC } from 'react'
 
@@ -35,7 +35,7 @@ const FilterSidebar: FC<{ form: FormInstance<Record<string, any>> | undefined }>
     <div className="bg-white shrink-0 w-[315px] dark:bg-dprimary sticky h-[calc(100vh-141px)] top-[125px] rounded-xl flex flex-col overflow-hidden p-2">
       <div className="flex items-center justify-between mb-4">
         <span className="font-semibold text-black dark:text-white">{t('view-style')}</span>
-        <ViewTypeButton />
+        {/* <ViewTypeButton /> */}
       </div>
       <FilterForm form={form} />
     </div>
