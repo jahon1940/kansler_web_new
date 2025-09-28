@@ -2,8 +2,8 @@ import Marquee from 'react-fast-marquee'
 
 const TrustedBy = () => {
   return (
-    <div className="px-2.5 mb-10 flex flex-col gap-4">
-      <h4 className=" font-semibold text-black dark:text-white text-[20px] inline-flex duration-200 hover:gap-3 gap-1 items-center">
+    <div className="mb-10 flex flex-col gap-4">
+      <h4 className="font-semibold text-black dark:text-white text-[26px] inline-flex duration-200 hover:gap-3 gap-1 items-center">
         Нам доверяют
       </h4>
       <Marquee autoFill pauseOnHover>
