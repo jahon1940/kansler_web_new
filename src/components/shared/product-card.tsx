@@ -101,9 +101,7 @@ const ProductCard: FC<IProps> = (props) => {
             </div>
           ) : null}
         </div>
-        <div className="mb-2 bg-[#F5F5F5] dark:bg-dsecondary dark:text-white w-full text-end text-[10px] rounded-b-md px-2 py-1">
-          {props?.organization?.name}
-        </div>
+
         <div className="flex flex-1 flex-col mb-2 dark:text-white">
           <span className="text-[12px] font-mono font-thin line-clamp-1">
             {t('fields:vendor_code.label')}: {props?.vendor_code}

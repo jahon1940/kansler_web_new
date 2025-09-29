@@ -116,9 +116,9 @@ const Header: FC = () => {
   }, [query, form])
 
   return (
-    <header className="hidden md:flex select-none sticky top-0 z-10 border-b border-gray-300 dark:border-dborder flex-col">
+    <>
       <div className="bg-[#E0E2E7] dark:bg-dsecondary">
-        <div className="custom-container items-center flex gap-2 justify-between py-2">
+        <div className="custom-container items-center flex gap-2 justify-between py-1">
           <ChatDrawer />
           <ul className="flex items-center gap-4 flex-1 justify-evenly">
             <li className="flex items-center gap-2">
@@ -134,12 +134,14 @@ const Header: FC = () => {
           </ul>
           <div className="items-center flex gap-2 justify-end">
             <Button
-            // htmlType="submit"
-            // color="default"
-            // variant="filled"
-            // className="text-[15px] font-medium border border-secondary-light/20 dark:border-dborder dark:bg-dsecondary dark:text-white"
+              // htmlType="submit"
+              // color="default"
+              // variant="filled"
+              // className="text-[15px] font-medium border border-secondary-light/20 dark:border-dborder dark:bg-dsecondary dark:text-white"
+              size="small"
+              className="text-[12px] rounded-md"
             >
-              <DownloadIcon className="text-[18px]" />
+              <DownloadIcon className="text-[16px]" />
               Скачать прайс
             </Button>
             <ThemeSwitcher />
@@ -147,11 +149,11 @@ const Header: FC = () => {
           </div>
         </div>
       </div>
-      <div className="bg-white dark:bg-dprimary py-[10px] text-black dark:text-white">
+      <header className="bg-white z-10 dark:bg-dprimary border-b dark:border-dborder sticky top-0  py-[10px] text-black dark:text-white">
         <div className="custom-container">
           <div className="flex items-center justify-between">
             <div className="flex items-center flex-1 gap-3">
-              <Link href="/" className="h-[48px] w-[200px]">
+              <Link href="/" className="h-[38px] w-[140px] mr-14">
                 <Image
                   src="/logo.png"
                   width={100}
@@ -221,8 +223,8 @@ const Header: FC = () => {
             </nav>
           </div>
         </div>
-      </div>
-    </header>
+      </header>
+    </>
   )
 }
 
