@@ -74,20 +74,69 @@ const ProductDetailedModal: FC<IProps> = (props) => {
             </Title>
           </div>
           <div className="grid flex-1 grid-cols-2 gap-10">
-            <div className="flex flex-col gap-6">
-              <div className=" max-h-[456px] h-full shrink-0 rounded-2xl overflow-hidden bg-white border border-secondary-light/20">
-                <div className="h-full w-full relative">
-                  <div className="absolute flex flex-col gap-2 right-4 top-4 z-[1]">
-                    {isSignedIn ? <FavoriteButton {...{ ...props, small: undefined }} /> : null}
-                    <ShareButtonModal slug={props?.title_slug} title={props?.title} />
+            <div className="flex flex-col gap-6 max-h-[456px]">
+              <div className="flex gap-2 h-full">
+                <div className="flex flex-col shrink-0 gap-2 h-full overflow-y-auto">
+                  <div className="size-[100px] shrink-0 border rounded-xl">
+                    <CImage
+                      alt="main image"
+                      width={300}
+                      height={300}
+                      src={props?.image_url ? API_HOST + props?.image_url : NoPhoto}
+                      className="w-full h-full object-contain"
+                    />
                   </div>
-                  <CImage
-                    alt="main image"
-                    width={300}
-                    height={300}
-                    src={props?.image_url ? API_HOST + props?.image_url : NoPhoto}
-                    className="w-full h-full object-contain"
-                  />
+                  <div className="size-[100px] shrink-0 border rounded-xl">
+                    <CImage
+                      alt="main image"
+                      width={300}
+                      height={300}
+                      src={props?.image_url ? API_HOST + props?.image_url : NoPhoto}
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                  <div className="size-[100px] shrink-0 border rounded-xl">
+                    <CImage
+                      alt="main image"
+                      width={300}
+                      height={300}
+                      src={props?.image_url ? API_HOST + props?.image_url : NoPhoto}
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                  <div className="size-[100px] shrink-0 border rounded-xl">
+                    <CImage
+                      alt="main image"
+                      width={300}
+                      height={300}
+                      src={props?.image_url ? API_HOST + props?.image_url : NoPhoto}
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                  <div className="size-[100px] shrink-0 border rounded-xl">
+                    <CImage
+                      alt="main image"
+                      width={300}
+                      height={300}
+                      src={props?.image_url ? API_HOST + props?.image_url : NoPhoto}
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                </div>
+                <div className="flex-1 h-full shrink-0 rounded-2xl overflow-hidden bg-white border border-secondary-light/20">
+                  <div className="h-full w-full relative">
+                    <div className="absolute flex flex-col gap-2 right-4 top-4 z-[1]">
+                      {isSignedIn ? <FavoriteButton {...{ ...props, small: undefined }} /> : null}
+                      <ShareButtonModal slug={props?.title_slug} title={props?.title} />
+                    </div>
+                    <CImage
+                      alt="main image"
+                      width={300}
+                      height={300}
+                      src={props?.image_url ? API_HOST + props?.image_url : NoPhoto}
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
                 </div>
               </div>
               <div className="flex justify-between z-10">
@@ -165,9 +214,9 @@ const ProductDetailedModal: FC<IProps> = (props) => {
             </div>
 
             <div className="mt-2 flex flex-col gap-2">
-              <Text className="grid grid-cols-2 w-full dark:text-white">
+              {/* <Text className="grid grid-cols-2 w-full dark:text-white">
                 <strong>{t('fields:organization.label2')}</strong>: {props?.organization?.name}
-              </Text>
+              </Text> */}
 
               <Text className="grid grid-cols-2 w-full dark:text-white">
                 <strong>{t('fields:brand.label')}</strong>{' '}
