@@ -9,6 +9,7 @@ const FilterForm = dynamic(() => import('@/components/shared/filter-form'), { ss
 // import ViewTypeButton from '../components/view-type-button'
 
 import type { FC } from 'react'
+import ViewTypeButton from '../components/view-type-button'
 
 const FilterSidebar: FC<{ form: FormInstance<Record<string, any>> | undefined }> = ({ form }) => {
   const { query } = useRouter()
@@ -32,10 +33,10 @@ const FilterSidebar: FC<{ form: FormInstance<Record<string, any>> | undefined }>
   }, [query])
 
   return (
-    <div className="bg-white shrink-0 w-[315px] dark:bg-dprimary sticky h-[calc(100vh-141px)] top-[125px] rounded-xl flex flex-col overflow-hidden p-2">
+    <div className="bg-white shrink-0 w-[315px] dark:bg-dprimary sticky h-[calc(100vh-97px)] top-[70px] rounded-xl flex flex-col overflow-hidden p-2">
       <div className="flex items-center justify-between mb-4">
         <span className="font-semibold text-black dark:text-white">{t('view-style')}</span>
-        {/* <ViewTypeButton /> */}
+        <ViewTypeButton />
       </div>
       <FilterForm form={form} />
     </div>

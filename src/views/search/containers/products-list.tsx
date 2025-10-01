@@ -249,7 +249,7 @@ const ProductsList: FC<{ form: FormInstance<Record<string, any>> | undefined }> 
                   row: ClickableTableRow,
                 },
               }}
-              className="h-full dark:[&_th]:dark:bg-dsecondary [&_thead]:sticky dark:[&_.ant-table-container]:border-dborder dark:[&_th]:border-dborder [&_th]:border-2 [&_td]:border-2 dark:[&_td]:border-dborder [&_thead]:top-[109px] [&_thead]:z-[1]"
+              className="h-full dark:[&_th]:dark:bg-dsecondary [&_thead]:sticky dark:[&_.ant-table-container]:border-dborder dark:[&_th]:border-dborder [&_th]:border-2 [&_td]:border-2 dark:[&_td]:border-dborder [&_thead]:top-[59px] [&_thead]:z-[1]"
             />
           </Media>
         </>
