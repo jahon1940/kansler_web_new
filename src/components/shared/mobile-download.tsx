@@ -1,28 +1,23 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import Logo from '@/assets/mirel.png'
 import AppstoreImage from '../../../public/app-store.svg'
 import GooglePlayImage from '../../../public/google-play.svg'
 
 export default function MobileDownload() {
   return (
     <div className="h-screen flex flex-col relative items-center justify-center p-4">
-      <div className="size-[50px] mb-3">
-        <Image width={50} height={50} alt="logo" src={Logo} className="rounded-xl" />
-      </div>
-
       <div className="text-center space-y-2 leading-[14px] mb-3">
         <p className="text-primary font-bold text-[14px]">Сайт предназначен</p>
         <p className="text-primary font-bold text-[14px]">только для полноформатного Веб-сайта</p>
       </div>
 
-      <div className="text-center text-black dark:text-white text-[14px] leading-[20px] mb-7">
+      {/* <div className="text-center text-black dark:text-white text-[14px] leading-[20px] mb-7">
         <p>Для мобильной версии скачайте</p>
         <p>Мобильное приложение Kansler</p>
-      </div>
+      </div> */}
 
-      <div className="flex flex-col space-y-3 w-full max-w-[155px]">
+      {/* <div className="flex flex-col space-y-3 w-full max-w-[155px]">
         <Link
           href="https://play.google.com/store/apps/details?id=uz.test.mirel"
           className="transition-opacity hover:opacity-80"
@@ -47,7 +42,7 @@ export default function MobileDownload() {
             className="w-full"
           />
         </Link>
-      </div>
+      </div> */}
     </div>
   )
 }
