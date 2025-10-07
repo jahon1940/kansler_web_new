@@ -4,7 +4,7 @@ import TrustedBy from './containers/trusted-by'
 
 const MainView = () => {
   return (
-    <main className="max-w-[1240px] w-full mx-auto py-4 overflow-hidden">
+    <main className="max-w-[1240px] w-full mx-auto lg:py-4 overflow-hidden">
       <MainBanner />
       <TrustedBy />
       <Products />

@@ -8,10 +8,21 @@ import { API_HOST } from '@/config'
 import { getPosters } from '../services'
 
 const responsive = {
-  tinyMobile: {
-    breakpoint: { max: 4000, min: 0 },
+  desktop: {
+    breakpoint: { max: 4000, min: 1280 },
     items: 1,
-    slidesToSlide: 1,
+  },
+  laptop: {
+    breakpoint: { max: 1280, min: 1024 },
+    items: 1,
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 640 },
+    items: 1,
+  },
+  mobile: {
+    breakpoint: { max: 640, min: 0 },
+    items: 1,
   },
 }
 
@@ -22,45 +33,66 @@ const MainBanner = () => {
   })
 
   return (
-    <div className="mb-10 overflow-hidden rounded-2xl">
+    <div className="mb-4 lg:mb-10 overflow-hidden lg:rounded-2xl">
       {posters ? (
         <Carousel
           responsive={responsive}
-          swipeable={false}
-          draggable={false}
-          ssr={true}
-          autoPlaySpeed={3000}
+          swipeable
+          draggable
+          ssr
+          autoPlaySpeed={4000}
           autoPlay
           showDots
           infinite
-          keyBoardControl={true}
-          transitionDuration={500}
-          removeArrowOnDeviceType={['mobile']}
+          keyBoardControl
+          transitionDuration={600}
+          removeArrowOnDeviceType={['tablet', 'mobile']}
         >
           {posters?.results?.map((poster) => (
             <Link
               href={`/posters/${poster?.id}`}
               key={`poster-${poster?.id}`}
-              className="bg-secondary-light relative h-[400px] block"
+              className="
+                relative block bg-secondary-light
+                lg:h-[400px]
+                md:h-[350px]
+                sm:h-[280px]
+                h-[220px]
+              "
             >
               {poster?.img_web ? (
                 <Image
                   draggable={false}
-                  width={1240}
-                  height={400}
+                  fill
                   alt="poster image"
                   src={API_HOST + poster?.img_web}
-                  className="w-full h-full object-fill"
+                  className="object-cover"
+                  sizes="(max-width: 640px) 100vw,
+                         (max-width: 1024px) 100vw,
+                         1240px"
                 />
               ) : null}
-              <Button type="primary" className="absolute right-10 bottom-10">
+              <Button
+                type="primary"
+                className="
+                  absolute right-10 bottom-10
+                  sm:right-5 sm:bottom-5
+                  text-sm sm:text-xs
+                "
+              >
                 Подробно
               </Button>
             </Link>
           ))}
         </Carousel>
       ) : (
-        <Skeleton.Input className="w-full h-[400px]" active />
+        <Skeleton.Input
+          className="w-full  lg:h-[400px]
+                md:h-[350px]
+                sm:h-[280px]
+                h-[220px]"
+          active
+        />
       )}
     </div>
   )

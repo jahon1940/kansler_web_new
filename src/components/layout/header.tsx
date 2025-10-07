@@ -117,10 +117,11 @@ const Header: FC = () => {
 
   return (
     <>
-      <div className="bg-[#E0E2E7] dark:bg-dsecondary">
-        <div className="custom-container items-center flex gap-2 justify-between py-1">
+      <div className="bg-[#E0E2E7] dark:bg-dsecondary text-sm">
+        <div className="custom-container flex flex-wrap items-center gap-2 justify-between py-1">
           <ChatDrawer />
-          <ul className="flex items-center gap-4 flex-1 justify-evenly">
+
+          <ul className="hidden md:flex items-center gap-4 flex-1 justify-evenly text-[13px]">
             <li className="flex items-center gap-2">
               <PhoneIcon size={16} />
               +998 (78) 148-44-44
@@ -132,28 +133,26 @@ const Header: FC = () => {
               <DeliveryIcon className="text-[18px]" /> Доставим не позднее 2х дней
             </li>
           </ul>
-          <div className="items-center flex gap-2 justify-end">
+
+          <div className="flex items-center gap-2 ml-auto">
             <Button
-              // htmlType="submit"
-              // color="default"
-              // variant="filled"
-              // className="text-[15px] font-medium border border-secondary-light/20 dark:border-dborder dark:bg-dsecondary dark:text-white"
               size="small"
-              className="text-[12px] rounded-md"
+              className="text-[12px] rounded-md flex items-center gap-1 whitespace-nowrap"
             >
               <DownloadIcon className="text-[16px]" />
-              Скачать прайс
+              <span className="hidden sm:inline">Скачать прайс</span>
             </Button>
             <ThemeSwitcher />
             <LocaleSwitcher />
           </div>
         </div>
       </div>
-      <header className="bg-white z-10 dark:bg-dprimary border-b dark:border-dborder sticky top-0  py-[10px] text-black dark:text-white">
+
+      <header className="bg-white z-10 dark:bg-dprimary border-b dark:border-dborder sticky top-0 py-[10px] text-black dark:text-white">
         <div className="custom-container">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center flex-1 gap-3">
-              <Link href="/" className="h-[38px] w-[140px] mr-14">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div className="flex flex-wrap items-center flex-1 gap-3">
+              <Link href="/" className="h-[38px] w-[120px] sm:w-[140px] mr-4 sm:mr-10">
                 <Image
                   src="/logo.png"
                   width={100}
@@ -162,16 +161,20 @@ const Header: FC = () => {
                   alt="Logo"
                 />
               </Link>
-              <CatalogMenu />
+
+              <div className="hidden md:block">
+                <CatalogMenu />
+              </div>
+
               <Form
-                className="flex items-center gap-1 flex-1"
+                className="flex items-center justify-end md:justify-normal gap-1 flex-1"
                 form={form}
                 onFinish={formSubmitHandler}
               >
-                <Form.Item name="title" className="max-w-[338px] w-full">
+                <Form.Item name="title" className="max-w-[200px] md:max-w-[338px] w-full">
                   <Input
                     prefix={
-                      <SearchNormalOutlineIcon className="text-[22px] mr-1 text-[#616883] dark:text-gray-400" />
+                      <SearchNormalOutlineIcon className="text-[20px] sm:text-[22px] mr-1 text-[#616883] dark:text-gray-400" />
                     }
                     type="text"
                     variant="filled"
@@ -184,17 +187,14 @@ const Header: FC = () => {
                   htmlType="submit"
                   color="default"
                   variant="filled"
-                  className="text-[15px] font-medium border border-secondary-light/20 dark:border-dborder dark:bg-dsecondary dark:text-white"
+                  className="hidden sm:inline text-[14px] font-medium border border-secondary-light/20 dark:border-dborder dark:bg-dsecondary dark:text-white"
                 >
                   {t('actions:search')}
                 </Button>
               </Form>
             </div>
 
-            <nav className="flex items-center gap-[17px]">
-              {/* <div className=" border-4 border-dsecondary rounded-full p-1 cursor-pointer">
-                <CImage src={CircleLogo} width={35} height={35} alt="logo" />
-              </div> */}
+            <nav className="flex items-center gap-[10px] fixed lg:relative bottom-0 left-0 right-0 bg-white sm:gap-[17px] w-full sm:w-auto justify-between sm:justify-end mt-2 sm:mt-0">
               {links.map(({ href, icon, label, activeIcon, count }) => (
                 <Link
                   key={href}
@@ -206,7 +206,7 @@ const Header: FC = () => {
                   <Button
                     type="text"
                     className={twMerge(
-                      'text-[25px]',
+                      'text-[22px] md:text-[25px]',
                       pathname === href
                         ? 'text-primary bg-primary-light/20 dark:bg-primary/20'
                         : 'text-black dark:text-white'
@@ -214,7 +214,7 @@ const Header: FC = () => {
                     icon={pathname === href ? activeIcon : icon}
                   />
                   {isSignedIn && count !== undefined && count > 0 ? (
-                    <span className="h-[16px] min-w-[16px] px-1 absolute right-[-5px] top-0 inline-flex items-center justify-center shrink-0 text-xs text-white bg-red-500 rounded-full">
+                    <span className="h-[14px] md:h-[16px] min-w-[14px] md:min-w-[16px] px-1 absolute right-[-5px] top-0 inline-flex items-center justify-center shrink-0 text-[10px] sm:text-xs text-white bg-red-500 rounded-full">
                       {count}
                     </span>
                   ) : null}

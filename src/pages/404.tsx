@@ -19,7 +19,7 @@ const NotFoundPage = () => {
   const { t } = useTranslation('common')
 
   return (
-    <div className="flex-1 text-black dark:text-white flex items-center justify-center">
+    <div className="flex flex-1 items-center justify-center min-h-screen bg-gray-50 dark:bg-[#0a0a0a] px-4 sm:px-8">
       <div className="text-center">
         <h1 className="text-xl font-bold mb-3">{t('common:not-found-page.title')}</h1>
         <p className="text-md mb-6">{t('common:not-found-page.description')}</p>

@@ -12,16 +12,17 @@ import { getPostersItem, getPostersItemProducts } from './services'
 import Loader from '@/components/shared/loader'
 import ProductCard from '@/components/shared/product-card'
 import ArrowLeftOutlineIcon from '@/components/icons/arrow-left-outline'
-
 import type { IListResponse } from '@/types'
 import type { IProduct } from '../search/types'
 
 const PosterItemPage = () => {
   const { query, push } = useRouter()
+  const posterId = query.posterId as string
 
-  const { data: poster } = useQuery({
-    queryKey: ['poster', query.posterId],
-    queryFn: () => getPostersItem(query.posterId as string),
+  const { data: poster, isLoading: isPosterLoading } = useQuery({
+    queryKey: ['poster', posterId],
+    queryFn: () => getPostersItem(posterId),
+    enabled: !!posterId,
   })
 
   const {
@@ -31,75 +32,78 @@ const PosterItemPage = () => {
     hasNextPage,
   } = useInfiniteQuery({
     initialPageParam: 1,
+    queryKey: ['poster-products', posterId],
+    enabled: !!posterId,
     getNextPageParam: (lastPage: IListResponse<IProduct>) => {
-      const page = lastPage?.next ? queryString.parseUrl(lastPage?.next)?.query?.page : null
-
-      if (page) {
-        return Number(page)
-      }
-
-      return null
+      const page = lastPage?.next ? queryString.parseUrl(lastPage.next)?.query?.page : null
+      return page ? Number(page) : undefined
     },
-    queryKey: ['poster-products', query.posterId, query.page, query.page_size],
-    queryFn: ({ pageParam }: any) =>
+    queryFn: ({ pageParam }) =>
       getPostersItemProducts({
-        id: query.posterId,
+        id: posterId,
         page_size: 20,
-        ...query,
-        page: pageParam as number,
+        page: pageParam,
       }),
-    enabled: Boolean(queryString.stringify(query).length),
   })
 
-  const content = products?.pages.flatMap((page) => page?.results)
+  const content = products?.pages.flatMap((page) => page.results) ?? []
 
   const loadMoreItems = useCallback(() => {
-    if (hasNextPage && !isFetchingNextPage) {
-      fetchNextPage()
-    }
+    if (hasNextPage && !isFetchingNextPage) fetchNextPage()
   }, [fetchNextPage, hasNextPage, isFetchingNextPage])
 
   return (
     <main className="custom-container w-full p-4 relative">
       <Button
         icon={<ArrowLeftOutlineIcon />}
-        className="absolute left-[10px] dark:bg-dprimary hover:dark:bg-dprimary/70 dark:text-white dark:border-dborder text-[20px] top-4"
+        className="lg:absolute lg:left-3 mb-4 lg:m-0 lg:top-4 sticky dark:bg-dprimary hover:dark:bg-dprimary/70 dark:text-white dark:border-dborder text-lg"
         onClick={() => push('/')}
       />
-      <div className="max-w-[1240px] w-full mx-auto">
-        <div className="flex flex-col gap-10">
-          <div className="flex flex-col gap-4">
-            <div className="h-[400px] rounded-2xl overflow-hidden">
-              {poster?.img_web ? (
-                <Image
-                  width={1240}
-                  height={500}
-                  src={API_HOST + poster?.img_web}
-                  alt="banner image"
-                  className="w-full h-full object-fill"
-                />
-              ) : (
-                <Skeleton.Input className="w-full h-[400px]" active />
-              )}
-            </div>
-            <h1 className="font-semibold text-[32px] dark:text-white">
-              {poster?.notification?.title}
-            </h1>
-            <div className="p-4 bg-white dark:bg-dprimary dark:border-dborder dark:text-white rounded-xl border">
-              {poster?.notification?.body}
-            </div>
+
+      <div className="max-w-[1240px] mx-auto flex flex-col gap-10">
+        <div className="flex flex-col gap-4">
+          <div
+            className="lg:h-[400px]
+                md:h-[350px]
+                sm:h-[280px]
+                h-[220px] rounded-2xl overflow-hidden relative"
+          >
+            {isPosterLoading ? (
+              <Skeleton.Input className="w-full h-[400px]" active />
+            ) : (
+              <Image
+                src={API_HOST + poster?.img_web}
+                alt={poster?.notification?.title || 'Poster banner'}
+                width={1240}
+                height={500}
+                className="w-full h-full object-cover"
+              />
+            )}
           </div>
 
-          <div className="grid overflow-auto max-[1100px]:grid-cols-4 max-[1200px]:grid-cols-4 grid-cols-5 gap-3">
-            {content?.map((product, i) => <ProductCard key={i} {...product} />)}
-            <InView onChange={(val) => val && loadMoreItems()}>
-              {({ ref }) => (
-                <div ref={ref} className="text-center min-h-[20px] py-4 col-span-full">
-                  {isFetchingNextPage ? <Loader /> : null}
-                </div>
-              )}
-            </InView>
-          </div>
+          <h1 className="font-semibold text-xl lg:text-3xl dark:text-white">
+            {poster?.notification?.title}
+          </h1>
+
+          {poster?.notification?.body && (
+            <div className="p-4 bg-white dark:bg-dprimary dark:border-dborder dark:text-white rounded-xl border">
+              {poster.notification.body}
+            </div>
+          )}
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
+          {content.map((product, i) => (
+            <ProductCard key={product.id || i} {...product} />
+          ))}
+
+          <InView onChange={(inView) => inView && loadMoreItems()}>
+            {({ ref }) => (
+              <div ref={ref} className="text-center min-h-[20px] py-4 col-span-full">
+                {isFetchingNextPage && <Loader />}
+              </div>
+            )}
+          </InView>
         </div>
       </div>
     </main>

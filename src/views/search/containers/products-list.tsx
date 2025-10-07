@@ -45,11 +45,9 @@ const ProductsList: FC<{ form: FormInstance<Record<string, any>> | undefined }> 
     initialPageParam: 1,
     getNextPageParam: (lastPage: IListResponse<IProduct>) => {
       const page = lastPage?.next ? queryString.parseUrl(lastPage?.next)?.query?.page : null
-
       if (page) {
         return Number(page)
       }
-
       return null
     },
     queryKey: [
@@ -217,7 +215,7 @@ const ProductsList: FC<{ form: FormInstance<Record<string, any>> | undefined }> 
   }
 
   return (
-    <div className="flex flex-col duration-200 flex-1 h-auto  dark:bg-dsecondary rounded-xl">
+    <div className="flex flex-col duration-200 flex-1 h-auto dark:bg-dsecondary rounded-xl">
       {isLoading ? (
         <div className="w-full flex-1 flex items-center justify-center">
           <Loader />
@@ -227,8 +225,8 @@ const ProductsList: FC<{ form: FormInstance<Record<string, any>> | undefined }> 
       {content && content?.length > 0 && isTableType ? (
         <>
           <Media lessThan="md">
-            <div className="flex flex-wrap gap-3">
-              {content?.map((product, i) => <ProductCard fixedWidth key={i} {...product} />)}
+            <div className="flex flex-col gap-4 p-2">
+              {content?.map((product, i) => <ProductCard key={i} {...product} />)}
               <InView onChange={(val) => val && loadMoreItems()}>
                 {({ ref }) => (
                   <div ref={ref} className="text-center min-h-[20px] py-4 col-span-full">
@@ -238,26 +236,30 @@ const ProductsList: FC<{ form: FormInstance<Record<string, any>> | undefined }> 
               </InView>
             </div>
           </Media>
+
           <Media greaterThanOrEqual="md" className="h-full flex-1">
-            <Table
-              dataSource={dataSource}
-              columns={columns as any}
-              pagination={false}
-              bordered
-              components={{
-                body: {
-                  row: ClickableTableRow,
-                },
-              }}
-              className="h-full dark:[&_th]:dark:bg-dsecondary [&_thead]:sticky dark:[&_.ant-table-container]:border-dborder dark:[&_th]:border-dborder [&_th]:border-2 [&_td]:border-2 dark:[&_td]:border-dborder [&_thead]:top-[59px] [&_thead]:z-[1]"
-            />
+            <div className="overflow-x-auto rounded-lg">
+              <Table
+                dataSource={dataSource}
+                columns={columns as any}
+                pagination={false}
+                bordered
+                scroll={{ x: true }}
+                components={{
+                  body: {
+                    row: ClickableTableRow,
+                  },
+                }}
+                className="min-w-[700px] h-full dark:[&_th]:dark:bg-dsecondary [&_thead]:sticky dark:[&_.ant-table-container]:border-dborder dark:[&_th]:border-dborder [&_th]:border-2 [&_td]:border-2 dark:[&_td]:border-dborder [&_thead]:top-[59px] [&_thead]:z-[1]"
+              />
+            </div>
           </Media>
         </>
       ) : null}
 
       {content && content?.length > 0 && !isTableType ? (
-        <div className="flex flex-wrap gap-3">
-          {content?.map((product, i) => <ProductCard fixedWidth key={i} {...product} />)}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-2">
+          {content?.map((product, i) => <ProductCard key={i} {...product} />)}
           <InView onChange={(val) => val && loadMoreItems()}>
             {({ ref }) => (
               <div ref={ref} className="text-center w-full min-h-[20px] py-4 col-span-full">

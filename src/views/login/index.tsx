@@ -42,10 +42,29 @@ export default function LoginView() {
   })
 
   return (
-    <main className="flex items-center w-full custom-container flex-1 justify-end p-4">
-      <div className="w-full max-w-md">
+    <main
+      className="
+        flex w-full flex-1 items-center justify-end p-4
+        custom-container
+        md:justify-end
+        sm:justify-center sm:p-6
+        min-h-[90vh]
+      "
+    >
+      <div
+        className="
+          w-full max-w-md
+          sm:max-w-sm
+          md:max-w-md
+          flex flex-col
+          bg-transparent
+        "
+      >
         <div className="mb-8 text-center">
-          <Title level={4} className="text-gray-500 dark:text-white font-normal">
+          <Title
+            level={4}
+            className="text-gray-500 dark:text-white font-normal text-[18px] sm:text-[20px]"
+          >
             {t('common:login_page.title')}
           </Title>
         </div>
@@ -57,6 +76,7 @@ export default function LoginView() {
           layout="vertical"
           className="flex flex-col gap-4 mb-6"
         >
+          {/* Username */}
           <Form.Item
             name="username"
             rules={[
@@ -68,10 +88,11 @@ export default function LoginView() {
             <Input
               prefix={<UserBoldIcon className="text-gray-400 dark:text-white" />}
               placeholder={t('fields:username.placeholder')}
-              className="h-[48px]"
+              className="h-[48px] text-[15px]"
             />
           </Form.Item>
 
+          {/* Password */}
           <Form.Item
             name="password"
             rules={[
@@ -90,7 +111,7 @@ export default function LoginView() {
                   <EyeSlashBoldIcon className="text-gray-400 dark:text-white" />
                 )
               }
-              className="h-[48px]"
+              className="h-[48px] text-[15px]"
             />
           </Form.Item>
 
@@ -98,7 +119,7 @@ export default function LoginView() {
             <Button
               type="primary"
               htmlType="submit"
-              className="w-full h-[48px]"
+              className="w-full h-[48px] text-[16px]"
               loading={isPending}
             >
               {t('actions:login')}
@@ -106,7 +127,15 @@ export default function LoginView() {
           </Form.Item>
         </Form>
 
-        <ul className="flex flex-col justify-center items-center text-black dark:text-white">
+        {/* Footer (contacts) */}
+        <ul
+          className="
+            flex flex-col justify-center items-center
+            text-black dark:text-white
+            text-[14px] sm:text-[15px]
+            leading-relaxed
+          "
+        >
           <li>{t('common:join_community.title')}</li>
           <li className="mb-5">{t('common:join_community.subtitle')}:</li>
           <li>OOO "SIGNUM"</li>
