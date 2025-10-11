@@ -117,7 +117,7 @@ const Header: FC = () => {
 
   return (
     <>
-      <div className="bg-[#E0E2E7] dark:bg-dsecondary text-sm">
+      <div className="bg-[#E0E2E7] hidden md:block dark:bg-dsecondary text-sm">
         <div className="custom-container flex flex-wrap items-center gap-2 justify-between py-1">
           <ChatDrawer />
 
@@ -194,7 +194,7 @@ const Header: FC = () => {
               </Form>
             </div>
 
-            <nav className="flex items-center gap-[10px] fixed lg:relative bottom-0 left-0 right-0 bg-white sm:gap-[17px] w-full sm:w-auto justify-between sm:justify-end mt-2 sm:mt-0">
+            <nav className="flex p-3 md:p-0 items-center gap-[10px] fixed lg:relative bottom-0 left-0 right-0 bg-white sm:gap-[17px] w-full sm:w-auto justify-between sm:justify-end mt-2 sm:mt-0">
               {links.map(({ href, icon, label, activeIcon, count }) => (
                 <Link
                   key={href}
@@ -206,10 +206,10 @@ const Header: FC = () => {
                   <Button
                     type="text"
                     className={twMerge(
-                      'text-[22px] md:text-[25px]',
+                      'text-[24px] md:text-[25px]',
                       pathname === href
-                        ? 'text-primary bg-primary-light/20 dark:bg-primary/20'
-                        : 'text-black dark:text-white'
+                        ? 'text-primary lg:bg-primary-light/20 dark:bg-primary/20'
+                        : 'text-secondary-light lg:text-black dark:text-white'
                     )}
                     icon={pathname === href ? activeIcon : icon}
                   />

@@ -5,8 +5,11 @@ import { Media } from '@/config/media-styles-config'
 
 import MobileDownload from '../shared/mobile-download'
 
-import type { ReactNode } from 'react'
+import { useEffect, type ReactNode } from 'react'
 import Footer from './footer'
+import { useQuery } from '@tanstack/react-query'
+import { getSessionKey } from '@/services'
+import { getCookie, setCookie } from 'cookies-next'
 
 interface IProps {
   children: ReactNode
@@ -14,6 +17,19 @@ interface IProps {
 
 const Layout = ({ children }: IProps) => {
   const { pathname } = useRouter()
+  const sessionKey = getCookie('session-key-kansler')
+
+  const { data } = useQuery({
+    queryKey: ['session-key'],
+    queryFn: () => getSessionKey(),
+    enabled: Boolean(sessionKey),
+  })
+
+  useEffect(() => {
+    if (data?.session_key) {
+      setCookie('session-key-kansler', data?.session_key)
+    }
+  }, [data])
 
   return (
     <>

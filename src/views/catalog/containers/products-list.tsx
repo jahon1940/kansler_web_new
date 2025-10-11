@@ -205,18 +205,27 @@ const ProductsList: FC<{ form: FormInstance<Record<string, any>> | undefined }> 
           return <Skeleton.Input active className="max-w-[210px] w-full rounded-lg h-[38px]" />
         }
 
-        if (isSignedIn) {
-          return record.max_quantity > 0 ? (
-            <CartInputStepper
-              productId={record?.id}
-              inCart={record?.in_cart}
-              minQuantity={record?.min_box_quantity}
-              isInStock={record?.max_quantity > 0}
-            />
-          ) : (
-            <MadeToOrder />
-          )
-        }
+        // if (isSignedIn) {
+        //   return record.max_quantity > 0 ? (
+        //     <CartInputStepper
+        //       productId={record?.id}
+        //       inCart={record?.in_cart}
+        //       minQuantity={record?.min_box_quantity}
+        //       isInStock={record?.max_quantity > 0}
+        //     />
+        //   ) : (
+        //     <MadeToOrder />
+        //   )
+        // }
+
+        return (
+          <CartInputStepper
+            productId={record?.id}
+            inCart={record?.in_cart}
+            minQuantity={record?.min_box_quantity}
+            isInStock={record?.max_quantity > 0}
+          />
+        )
 
         return null
       },

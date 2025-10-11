@@ -238,18 +238,29 @@ const ProductsList = () => {
           return <Skeleton.Input active className="max-w-[210px] w-full rounded-lg h-[38px]" />
         }
 
-        if (isSignedIn) {
-          return (
-            <CartInputStepper
-              key={record.id}
-              quantity={record?.quantity}
-              productId={record?.product?.id}
-              inCart={record?.product?.in_cart}
-              minQuantity={record?.product?.min_box_quantity}
-              isInStock={record?.product?.max_quantity > 0}
-            />
-          )
-        }
+        // if (isSignedIn) {
+        //   return (
+        //     <CartInputStepper
+        //       key={record.id}
+        //       quantity={record?.quantity}
+        //       productId={record?.product?.id}
+        //       inCart={record?.product?.in_cart}
+        //       minQuantity={record?.product?.min_box_quantity}
+        //       isInStock={record?.product?.max_quantity > 0}
+        //     />
+        //   )
+        // }
+
+        return (
+          <CartInputStepper
+            key={record.id}
+            quantity={record?.quantity}
+            productId={record?.product?.id}
+            inCart={record?.product?.in_cart}
+            minQuantity={record?.product?.min_box_quantity}
+            isInStock={record?.product?.max_quantity > 0}
+          />
+        )
       },
     },
   ]

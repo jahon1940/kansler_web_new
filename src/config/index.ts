@@ -8,10 +8,10 @@ export const API_BASE_URL = `${API_HOST}/${API_VERSION}`
 export const DEFAULT_THEME = 'light'
 
 export const colors = {
-  black: '#222B50',
-  'primary-dark': '#354AB5',
+  black: '#245022',
+  'primary-dark': '#015228',
   primary: '#006e36',
-  'primary-light': '#C7D0FF',
+  'primary-light': '#b5ebcf',
   secondary: '#0F0F0F',
   'secondary-light': '#9A9A9A',
   'secondary-dark': '#191919',

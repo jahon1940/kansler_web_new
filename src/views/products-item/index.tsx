@@ -96,7 +96,8 @@ const ProductsItemView = () => {
         <div className="bg-white p-8 rounded-lg relative">
           {data ? (
             <div className="absolute flex flex-col gap-2 right-4 top-4 z-[1]">
-              {isSignedIn ? <FavoriteButton {...data} /> : null}
+              {/* {isSignedIn ? <FavoriteButton {...data} /> : null} */}
+              <FavoriteButton {...data} />
               <ShareButtonModal slug={data?.title_slug} title={data?.title} />
             </div>
           ) : null}
@@ -144,7 +145,7 @@ const ProductsItemView = () => {
               ) : null}
             </div>
 
-            {isSignedIn && data && pathname !== '/' ? (
+            {/* {isSignedIn && data && pathname !== '/' ? (
               data?.max_quantity > 0 ? (
                 <CartInputStepper
                   longButton
@@ -156,7 +157,14 @@ const ProductsItemView = () => {
               ) : (
                 <MadeToOrder />
               )
-            ) : null}
+            ) : null} */}
+            <CartInputStepper
+              longButton
+              productId={data?.id}
+              inCart={data?.in_cart}
+              minQuantity={data?.min_box_quantity}
+              // isInStock={data?.max_quantity > 0}
+            />
           </div>
 
           <div className="flex flex-col">
@@ -219,7 +227,7 @@ const ProductsItemView = () => {
         </div>
       ) : null}
 
-      <div className="rounded-lg overflow-hidden mt-5">
+      <div className="overflow-hidden mt-5">
         <h3 className="text-xl font-semibold mb-4 dark:text-white">
           {t('common:similar-products')}:
         </h3>

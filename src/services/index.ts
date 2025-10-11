@@ -7,7 +7,17 @@ import type {
   IContractor,
   ICount,
   IListResponse,
+  ISessionKeyResponse,
 } from '@/types'
+
+export const getSessionKey = async (): Promise<ISessionKeyResponse> => {
+  const res: ISessionKeyResponse = await api({
+    url: '/clients/session_key',
+    method: 'get',
+  })
+
+  return res
+}
 
 export async function addToFav(data: { product_id: number }) {
   const res = await api({

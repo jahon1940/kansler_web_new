@@ -95,11 +95,11 @@ const ProductCard: FC<IProps> = (props) => {
           <span className="absolute bottom-1 right-1 dark:bg-dsecondary dark:border-dborder dark:text-white bg-background border rounded px-1.5 py-0.5 text-[10px]">
             {props?.brand?.name}
           </span>
-          {props && isSignedIn ? (
-            <div className="absolute flex flex-col gap-2 right-0 top-0 z-[1]">
-              <FavoriteButton type="text" {...{ ...props, small: undefined }} />
-            </div>
-          ) : null}
+          {/* {props && isSignedIn ? ( */}
+          <div className="absolute flex flex-col gap-2 right-0 top-0 z-[1]">
+            <FavoriteButton type="text" {...{ ...props, small: undefined }} />
+          </div>
+          {/* ) : null} */}
         </div>
 
         <div className="flex flex-1 flex-col mb-2 dark:text-white">
@@ -122,7 +122,7 @@ const ProductCard: FC<IProps> = (props) => {
             ) : null}
           </div>
         </div>
-        {isSignedIn ? (
+        {/* {isSignedIn ? (
           props.max_quantity > 0 ? (
             <CartInputStepper
               productId={props?.id}
@@ -133,7 +133,13 @@ const ProductCard: FC<IProps> = (props) => {
           ) : (
             <MadeToOrder />
           )
-        ) : null}
+        ) : null} */}
+        <CartInputStepper
+          productId={props?.id}
+          inCart={props?.in_cart}
+          minQuantity={props?.min_box_quantity}
+          isInStock={props?.max_quantity > 0}
+        />
       </div>
 
       <ProductDetailedModal {...props} open={isModalOpen} onCancel={handleCloseModal} />

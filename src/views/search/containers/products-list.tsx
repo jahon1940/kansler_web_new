@@ -183,18 +183,27 @@ const ProductsList: FC<{ form: FormInstance<Record<string, any>> | undefined }> 
           return <Skeleton.Input active className="max-w-[210px] w-full rounded-lg h-[38px]" />
         }
 
-        if (isSignedIn) {
-          return record?.max_quantity > 0 ? (
-            <CartInputStepper
-              productId={record?.id}
-              inCart={record?.in_cart}
-              minQuantity={record?.min_box_quantity}
-              isInStock={record?.max_quantity > 0}
-            />
-          ) : (
-            <MadeToOrder />
-          )
-        }
+        // if (isSignedIn) {
+        //   return record?.max_quantity > 0 ? (
+        //     <CartInputStepper
+        //       productId={record?.id}
+        //       inCart={record?.in_cart}
+        //       minQuantity={record?.min_box_quantity}
+        //       isInStock={record?.max_quantity > 0}
+        //     />
+        //   ) : (
+        //     <MadeToOrder />
+        //   )
+        // }
+
+        return (
+          <CartInputStepper
+            productId={record?.id}
+            inCart={record?.in_cart}
+            minQuantity={record?.min_box_quantity}
+            isInStock={record?.max_quantity > 0}
+          />
+        )
       },
     },
   ]
@@ -238,21 +247,21 @@ const ProductsList: FC<{ form: FormInstance<Record<string, any>> | undefined }> 
           </Media>
 
           <Media greaterThanOrEqual="md" className="h-full flex-1">
-            <div className="overflow-x-auto rounded-lg">
-              <Table
-                dataSource={dataSource}
-                columns={columns as any}
-                pagination={false}
-                bordered
-                scroll={{ x: true }}
-                components={{
-                  body: {
-                    row: ClickableTableRow,
-                  },
-                }}
-                className="min-w-[700px] h-full dark:[&_th]:dark:bg-dsecondary [&_thead]:sticky dark:[&_.ant-table-container]:border-dborder dark:[&_th]:border-dborder [&_th]:border-2 [&_td]:border-2 dark:[&_td]:border-dborder [&_thead]:top-[59px] [&_thead]:z-[1]"
-              />
-            </div>
+            {/* <div className="overflow-x-auto rounded-lg"> */}
+            <Table
+              dataSource={dataSource}
+              columns={columns as any}
+              pagination={false}
+              bordered
+              // scroll={{ x: true }}
+              components={{
+                body: {
+                  row: ClickableTableRow,
+                },
+              }}
+              className="min-w-[700px] h-full dark:[&_th]:dark:bg-dsecondary [&_thead]:sticky dark:[&_.ant-table-container]:border-dborder dark:[&_th]:border-dborder [&_th]:border-2 [&_td]:border-2 dark:[&_td]:border-dborder [&_thead]:top-[59px] [&_thead]:z-[1]"
+            />
+            {/* </div> */}
           </Media>
         </>
       ) : null}

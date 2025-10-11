@@ -90,7 +90,8 @@ const ProductDetailedModal: FC<IProps> = (props) => {
 
                 <div className="flex-1 rounded-2xl overflow-hidden bg-white border border-secondary-light/20 relative">
                   <div className="absolute flex flex-col gap-2 right-4 top-4 z-[1]">
-                    {isSignedIn && <FavoriteButton {...{ ...props, small: undefined }} />}
+                    {/* {isSignedIn && <FavoriteButton {...{ ...props, small: undefined }} />} */}
+                    <FavoriteButton {...{ ...props, small: undefined }} />
                     <ShareButtonModal slug={props?.title_slug} title={props?.title} />
                   </div>
                   <CImage
@@ -137,7 +138,7 @@ const ProductDetailedModal: FC<IProps> = (props) => {
                   )}
                 </div>
 
-                {isSignedIn &&
+                {/* {isSignedIn &&
                   (props.max_quantity > 0 ? (
                     <CartInputStepper
                       quantity={props?.quantity}
@@ -148,7 +149,14 @@ const ProductDetailedModal: FC<IProps> = (props) => {
                     />
                   ) : (
                     <MadeToOrder />
-                  ))}
+                  ))} */}
+                <CartInputStepper
+                  quantity={props?.quantity}
+                  productId={props?.id}
+                  minQuantity={props?.min_box_quantity}
+                  inCart={props?.in_cart}
+                  isInStock={props?.max_quantity > 0}
+                />
               </div>
 
               <div className="flex flex-col gap-1">

@@ -8,6 +8,10 @@ interface IListResponse<T> {
   results: T[]
 }
 
+interface ISessionKeyResponse {
+  session_key: string
+}
+
 interface IError {
   error_code: string
   message: string
@@ -69,4 +73,13 @@ interface IBrand {
   is_ordered: boolean
 }
 
-export type { IListResponse, IError, ICount, IContractor, IChatResponse, IChatHistory, IBrand }
+export type {
+  IListResponse,
+  IError,
+  ICount,
+  IContractor,
+  IChatResponse,
+  IChatHistory,
+  IBrand,
+  ISessionKeyResponse,
+}

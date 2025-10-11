@@ -19,6 +19,7 @@ api.interceptors.request.use(
   (config) => {
     const token = getCookie('auth_token')
     const language = getCookie('NEXT_LOCALE')
+    const sessionKey = getCookie('session-key-kansler')
 
     if (token) {
       config.headers['Device-Token'] = `Mirel ${token}`
@@ -28,6 +29,8 @@ api.interceptors.request.use(
     if (!config.headers['Accept-Language']) {
       config.headers['Accept-Language'] = language || defaultLocale
     }
+
+    config.headers['sessionkey'] = sessionKey
 
     return config
   },
@@ -41,6 +44,7 @@ api.interceptors.response.use(
   (error) => {
     if (error.response?.status === 401) {
       deleteCookie('auth_token')
+      deleteCookie('session-key-kansler')
     }
 
     console.error('API Error:', error?.response?.data || error.message)

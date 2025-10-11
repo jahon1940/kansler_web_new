@@ -27,7 +27,8 @@ const ProductsTableCard: FC<IProduct> = (props) => {
           loading="lazy"
         />
         <div className="absolute flex flex-col gap-2 right-0.5 top-0.5 z-0">
-          {isSignedIn && props?.id ? <FavoriteButton small {...props} /> : null}
+          {/* {isSignedIn && props?.id ? <FavoriteButton small {...props} /> : null} */}
+          <FavoriteButton small {...props} />
         </div>
       </div>
       <div className="flex flex-col">

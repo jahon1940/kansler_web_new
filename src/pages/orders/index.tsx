@@ -18,7 +18,7 @@ export const getServerSideProps: GetServerSideProps = async ({ locale, req }) =>
   if (!token) {
     return {
       redirect: {
-        destination: (locale === 'uz' ? '/uz/' : '') + '/login',
+        destination: (locale === 'uz' ? '/uz/' : '') + '/auth/login',
         permanent: false,
       },
     }
