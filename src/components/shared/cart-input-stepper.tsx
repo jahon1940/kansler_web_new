@@ -139,7 +139,7 @@ const CartInputStepper: FC<IProps> = ({
               }
               className={twMerge(
                 '[&_input]:text-center flex-1 bg-white dark:bg-dsecondary [&_input]:dark:text-white border-t-primary border-b-primary',
-                longButton ? 'w-[120px]' : ''
+                longButton ? 'w-[120px]' : 'w-auto'
               )}
               onClick={handleStopPropagation}
               value={value || undefined}
@@ -230,7 +230,7 @@ const CartInputStepper: FC<IProps> = ({
             size="middle"
             type="primary"
             icon={<ShoppingCartOutlineIcon />}
-            className="text-[16px]"
+            className="text-[16px] shrink-0"
             loading={isAdding}
             onClick={(e) => {
               e.stopPropagation()
