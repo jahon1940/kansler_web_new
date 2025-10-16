@@ -19,7 +19,7 @@ api.interceptors.request.use(
   (config) => {
     const token = getCookie('auth_token')
     const language = getCookie('NEXT_LOCALE')
-    const sessionKey = localStorage.getItem('session-key-kansler')
+    const sessionKey = getCookie('session-key-kansler')
 
     if (token) {
       config.headers['Device-Token'] = `Mirel ${token}`
@@ -31,7 +31,7 @@ api.interceptors.request.use(
     }
 
     if (sessionKey) {
-      config.headers['sessionkey'] = JSON.parse(sessionKey)?.value
+      config.headers['sessionkey'] = sessionKey
     }
 
     return config
@@ -46,7 +46,7 @@ api.interceptors.response.use(
   (error) => {
     if (error.response?.status === 401) {
       deleteCookie('auth_token')
-      localStorage.removeItem('session-key-kansler')
+      deleteCookie('session-key-kansler')
     }
 
     console.error('API Error:', error?.response?.data || error.message)

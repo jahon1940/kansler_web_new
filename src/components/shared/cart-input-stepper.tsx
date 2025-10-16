@@ -95,7 +95,7 @@ const CartInputStepper: FC<IProps> = ({
     <div className="flex flex-col gap-1 z-[1]">
       <div
         className={twMerge(
-          'flex relative items-center gap-2',
+          'flex relative flex-wrap items-center gap-2',
           longButton && !isInCart ? 'justify-between' : 'justify-end'
         )}
       >

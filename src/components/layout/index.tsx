@@ -1,5 +1,6 @@
 import { useEffect, type ReactNode } from 'react'
 import { useQuery } from '@tanstack/react-query'
+import { getCookie, setCookie, deleteCookie } from 'cookies-next'
 
 import Header from './header'
 import Footer from './footer'
@@ -9,27 +10,13 @@ interface IProps {
   children: ReactNode
 }
 
-const EXPIRY_DURATION = 7 * 24 * 60 * 60 * 1000
+const EXPIRY_DAYS = 7
 
 const Layout = ({ children }: IProps) => {
   const getStoredSession = () => {
     if (typeof window === 'undefined') return null
-
-    const stored = localStorage.getItem('session-key-kansler')
-    if (!stored) return null
-
-    try {
-      const parsed = JSON.parse(stored)
-      if (parsed.expiry && Date.now() < parsed.expiry) {
-        return parsed.value
-      } else {
-        localStorage.removeItem('session-key-kansler')
-        return null
-      }
-    } catch {
-      localStorage.removeItem('session-key-kansler')
-      return null
-    }
+    const cookie = getCookie('session-key-kansler')
+    return cookie || null
   }
 
   const sessionKey = getStoredSession()
@@ -42,11 +29,13 @@ const Layout = ({ children }: IProps) => {
 
   useEffect(() => {
     if (data?.session_key && !sessionKey) {
-      const payload = {
-        value: data.session_key,
-        expiry: Date.now() + EXPIRY_DURATION,
-      }
-      localStorage.setItem('session-key-kansler', JSON.stringify(payload))
+      setCookie('session-key-kansler', data.session_key, {
+        maxAge: EXPIRY_DAYS * 24 * 60 * 60,
+        sameSite: 'strict',
+        secure: true,
+      })
+    } else if (!data?.session_key && !sessionKey) {
+      deleteCookie('session-key-kansler')
     }
   }, [data, sessionKey])
 

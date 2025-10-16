@@ -87,6 +87,9 @@ const ProductsItemView = () => {
     },
   ]
 
+  const image = data?.contractor?.image_url || data?.image_url
+  // src={image ? API_HOST + image : NoPhoto}
+
   return (
     <div className="custom-container py-6 w-full">
       <div className="flex lg:items-center mb-6 gap-4">
@@ -99,7 +102,7 @@ const ProductsItemView = () => {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 w-full">
-        <div className="bg-white p-1 lg:p-8 rounded-lg relative">
+        <div className="bg-white w-full h-full max-h-[500px] rounded-lg relative flex-col-reverse lg:flex-row flex gap-2">
           {data ? (
             <div className="absolute flex flex-col gap-2 lg:right-4 top-0 right-0 lg:top-4 z-[1]">
               {/* {isSignedIn ? <FavoriteButton {...data} /> : null} */}
@@ -107,13 +110,60 @@ const ProductsItemView = () => {
               <ShareButtonModal slug={data?.title_slug} title={data?.title} />
             </div>
           ) : null}
-          <div className="flex justify-center max-h-[500px]">
+          <div className="flex lg:flex-col shrink-0 gap-2 lg:h-full overflow-y-auto">
+            <div className="size-[100px] shrink-0 border rounded-xl">
+              <CImage
+                alt="main image"
+                width={300}
+                height={300}
+                src={image ? API_HOST + image : NoPhoto}
+                className="w-full h-full object-contain"
+              />
+            </div>
+            <div className="size-[100px] shrink-0 border rounded-xl">
+              <CImage
+                alt="main image"
+                width={300}
+                height={300}
+                src={image ? API_HOST + image : NoPhoto}
+                className="w-full h-full object-contain"
+              />
+            </div>
+            <div className="size-[100px] shrink-0 border rounded-xl">
+              <CImage
+                alt="main image"
+                width={300}
+                height={300}
+                src={image ? API_HOST + image : NoPhoto}
+                className="w-full h-full object-contain"
+              />
+            </div>
+            <div className="size-[100px] shrink-0 border rounded-xl">
+              <CImage
+                alt="main image"
+                width={300}
+                height={300}
+                src={image ? API_HOST + image : NoPhoto}
+                className="w-full h-full object-contain"
+              />
+            </div>
+            <div className="size-[100px] shrink-0 border rounded-xl">
+              <CImage
+                alt="main image"
+                width={300}
+                height={300}
+                src={image ? API_HOST + image : NoPhoto}
+                className="w-full h-full object-contain"
+              />
+            </div>
+          </div>
+          <div className="flex-1 shrink-0 h-full rounded-2xl overflow-hidden bg-white border border-secondary-light/20">
             <CImage
-              src={data?.image_url ? API_HOST + data?.image_url : NoPhoto}
-              alt="Буквы на магните"
-              width={400}
-              height={400}
-              className="object-contain"
+              alt="main image"
+              width={300}
+              height={300}
+              src={image ? API_HOST + image : NoPhoto}
+              className="w-full h-full object-contain"
             />
           </div>
         </div>
