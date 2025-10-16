@@ -2,7 +2,7 @@ import api from '@/services/axios'
 
 import type { IPoster } from '../types'
 import type { IListResponse } from '@/types'
-import type { IProduct } from '@/views/search/types'
+import { IProduct } from '@/views/shopping-cart/types'
 
 export const getPostersItem = async (id?: number | string): Promise<IPoster> => {
   const res: IPoster = await api({

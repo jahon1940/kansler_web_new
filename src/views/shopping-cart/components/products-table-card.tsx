@@ -15,11 +15,13 @@ const ProductsTableCard: FC<IProduct> = (props) => {
   const { t } = useTranslation()
   const isSignedIn = useAuthStore((state) => state.isSignedIn)
 
+  const image = props?.contractor?.image_url || props?.image_url
+
   return (
     <div className="flex items-center gap-3">
       <div className="size-[75px] relative outline-none shrink-0 bg-background-light rounded-lg overflow-hidden">
         <CImage
-          src={props?.image_url ? API_HOST + props?.image_url : NoPhoto}
+          src={image ? API_HOST + image : NoPhoto}
           alt={props?.title}
           width={50}
           height={50}

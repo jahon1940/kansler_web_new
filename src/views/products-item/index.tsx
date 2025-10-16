@@ -35,6 +35,12 @@ const ProductsItemView = () => {
     enabled: Boolean(query.productSlug),
   })
 
+  const maxQuantity = data?.stocks.reduce((sum, item) => sum + item.quantity, 0)
+  const maxContractorQuantity = data?.contractor?.stocks?.reduce(
+    (sum, item) => sum + item.quantity,
+    0
+  )
+
   const { data: user } = useQuery({
     queryKey: ['auth-current', isSignedIn],
     queryFn: () => getAuthCurrent(),
@@ -83,19 +89,19 @@ const ProductsItemView = () => {
 
   return (
     <div className="custom-container py-6 w-full">
-      <div className="flex items-center mb-6 gap-4">
+      <div className="flex lg:items-center mb-6 gap-4">
         <Button
           icon={<ArrowLeftOutlineIcon />}
           onClick={handleBack}
-          className="dark:bg-dborder dark:text-white dark:border-dborder"
+          className="dark:bg-dborder shrink-0 dark:text-white dark:border-dborder"
         />
-        <h1 className="text-2xl font-bold dark:text-white">{data?.title}</h1>
+        <h1 className="text-xl lg:text-2xl font-bold dark:text-white">{data?.title}</h1>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 w-full">
-        <div className="bg-white p-8 rounded-lg relative">
+        <div className="bg-white p-1 lg:p-8 rounded-lg relative">
           {data ? (
-            <div className="absolute flex flex-col gap-2 right-4 top-4 z-[1]">
+            <div className="absolute flex flex-col gap-2 lg:right-4 top-0 right-0 lg:top-4 z-[1]">
               {/* {isSignedIn ? <FavoriteButton {...data} /> : null} */}
               <FavoriteButton {...data} />
               <ShareButtonModal slug={data?.title_slug} title={data?.title} />
@@ -112,7 +118,7 @@ const ProductsItemView = () => {
           </div>
         </div>
 
-        <div className="bg-white dark:bg-dprimary p-8 rounded-lg flex flex-col gap-6">
+        <div className="bg-white dark:bg-dprimary p-1 lg:p-8 rounded-lg flex flex-col gap-6">
           <div className="flex flex-col border-[8px] gap-4 rounded-xl p-4 dark:border-dborder ">
             <div className="flex flex-col">
               <h2 className="text-3xl font-bold dark:text-white">
@@ -172,7 +178,7 @@ const ProductsItemView = () => {
               <Text className="text-[14px] block mt-2 dark:text-white">
                 <span>{t('common:its-remaining', { value: data?.organization?.name })}</span>:{' '}
                 <span className="text-primary font-bold dark:text-white text-lg">
-                  {formatAmount(data?.max_quantity)} {data?.measure}
+                  {formatAmount(maxContractorQuantity || maxQuantity)} {data?.measure}
                 </span>
               </Text>
             ) : null}
@@ -219,7 +225,7 @@ const ProductsItemView = () => {
       </div>
 
       {data?.description ? (
-        <div className="bg-white dark:bg-dprimary p-8 rounded-lg mt-5">
+        <div className="bg-white dark:bg-dprimary p-1 lg:p-8 rounded-lg mt-5">
           <h3 className="text-xl font-semibold mb-4 dark:text-white">
             {t('fields:description.label')}:
           </h3>
@@ -228,7 +234,7 @@ const ProductsItemView = () => {
       ) : null}
 
       <div className="overflow-hidden mt-5">
-        <h3 className="text-xl font-semibold mb-4 dark:text-white">
+        <h3 className="text-xl px-1 lg:p-0 font-semibold m-0 lg:mb-4 dark:text-white">
           {t('common:similar-products')}:
         </h3>
 

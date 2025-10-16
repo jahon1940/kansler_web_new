@@ -29,7 +29,7 @@ import ClickableTableRow from '@/views/shopping-cart/components/clickable-table-
 import type { FC } from 'react'
 import type { IListResponse } from '@/types'
 import type { ColumnsType } from 'antd/es/table'
-import type { IProduct } from '@/views/search/types'
+import { IProduct } from '@/views/shopping-cart/types'
 
 const ProductsList: FC<{ form: FormInstance<Record<string, any>> | undefined }> = ({ form }) => {
   const { t } = useTranslation('common')
@@ -223,7 +223,6 @@ const ProductsList: FC<{ form: FormInstance<Record<string, any>> | undefined }> 
             productId={record?.id}
             inCart={record?.in_cart}
             minQuantity={record?.min_box_quantity}
-            isInStock={record?.max_quantity > 0}
           />
         )
 

@@ -1,7 +1,8 @@
 import api from '@/services/axios'
 
 import type { IListResponse } from '@/types'
-import type { ICategory, IGetProductsParams, IOrganization, IProduct } from '../types'
+import type { ICategory, IGetProductsParams, IOrganization } from '../types'
+import { IProduct } from '@/views/shopping-cart/types'
 
 export const getOrganizations = async (params?: any): Promise<IListResponse<IOrganization>> => {
   const res: IListResponse<IOrganization> = await api({

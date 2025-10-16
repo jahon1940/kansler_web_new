@@ -16,14 +16,12 @@ const SearchLayout = () => {
         <FilterSidebar form={form} />
       ) : (
         <>
-          <div className="fixed right-4 bottom-16 z-[1]">
-            <button
-              onClick={() => setIsSidebarOpen(true)}
-              className="rounded-lg bg-primary text-white px-4 py-2 font-medium"
-            >
-              Фильтры
-            </button>
-          </div>
+          <button
+            onClick={() => setIsSidebarOpen(true)}
+            className="rounded-lg fixed left-4 bottom-22 z-[2] bg-primary text-white px-4 py-2 font-medium"
+          >
+            Фильтры
+          </button>
 
           {isSidebarOpen && (
             <div className="fixed inset-0 z-50 bg-black/40 flex justify-end">

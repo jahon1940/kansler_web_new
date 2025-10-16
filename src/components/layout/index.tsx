@@ -1,51 +1,61 @@
-import { useRouter } from 'next/router'
+import { useEffect, type ReactNode } from 'react'
+import { useQuery } from '@tanstack/react-query'
 
 import Header from './header'
-import { Media } from '@/config/media-styles-config'
-
-import MobileDownload from '../shared/mobile-download'
-
-import { useEffect, type ReactNode } from 'react'
 import Footer from './footer'
-import { useQuery } from '@tanstack/react-query'
 import { getSessionKey } from '@/services'
-import { getCookie, setCookie } from 'cookies-next'
 
 interface IProps {
   children: ReactNode
 }
 
+const EXPIRY_DURATION = 7 * 24 * 60 * 60 * 1000
+
 const Layout = ({ children }: IProps) => {
-  const { pathname } = useRouter()
-  const sessionKey = getCookie('session-key-kansler')
+  const getStoredSession = () => {
+    if (typeof window === 'undefined') return null
+
+    const stored = localStorage.getItem('session-key-kansler')
+    if (!stored) return null
+
+    try {
+      const parsed = JSON.parse(stored)
+      if (parsed.expiry && Date.now() < parsed.expiry) {
+        return parsed.value
+      } else {
+        localStorage.removeItem('session-key-kansler')
+        return null
+      }
+    } catch {
+      localStorage.removeItem('session-key-kansler')
+      return null
+    }
+  }
+
+  const sessionKey = getStoredSession()
 
   const { data } = useQuery({
     queryKey: ['session-key'],
     queryFn: () => getSessionKey(),
-    enabled: Boolean(sessionKey),
+    enabled: !sessionKey,
   })
 
   useEffect(() => {
-    if (data?.session_key) {
-      setCookie('session-key-kansler', data?.session_key)
+    if (data?.session_key && !sessionKey) {
+      const payload = {
+        value: data.session_key,
+        expiry: Date.now() + EXPIRY_DURATION,
+      }
+      localStorage.setItem('session-key-kansler', JSON.stringify(payload))
     }
-  }, [data])
+  }, [data, sessionKey])
 
   return (
-    <>
-      {/* <Media greaterThanOrEqual={pathname.includes('politika') ? 'xs' : 'sm'}> */}
-      <div className="flex flex-col min-h-screen mb-[57px] lg:m-0">
-        <Header />
-        {children}
-        <Footer />
-      </div>
-      {/* </Media> */}
-      {/* {pathname.includes('politika') ? null : (
-        <Media lessThan="sm">
-          <MobileDownload />
-        </Media>
-      )} */}
-    </>
+    <div className="flex flex-col min-h-screen mb-[57px] lg:m-0">
+      <Header />
+      {children}
+      <Footer />
+    </div>
   )
 }
 

@@ -23,10 +23,10 @@ import CartInputStepper from '@/components/shared/cart-input-stepper'
 // import CartInputStepper from '@/components/shared/cart-input-stepper'
 
 import type { FC } from 'react'
-import type { IProduct } from '../types'
 import type { FormInstance } from 'antd'
 import type { IListResponse } from '@/types'
 import type { ColumnsType } from 'antd/es/table'
+import type { IProduct } from '@/views/shopping-cart/types'
 import ClickableTableRow from '@/views/shopping-cart/components/clickable-table-row'
 
 const ProductsList: FC<{ form: FormInstance<Record<string, any>> | undefined }> = ({ form }) => {
@@ -201,7 +201,6 @@ const ProductsList: FC<{ form: FormInstance<Record<string, any>> | undefined }> 
             productId={record?.id}
             inCart={record?.in_cart}
             minQuantity={record?.min_box_quantity}
-            isInStock={record?.max_quantity > 0}
           />
         )
       },

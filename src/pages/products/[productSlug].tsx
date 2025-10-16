@@ -13,7 +13,7 @@ const ProductsItemView = dynamic(() => import('@/views/products-item'), { ssr: f
 import NoPhoto from '@/assets/nophoto.png'
 
 import type { GetServerSideProps } from 'next'
-import type { IProduct } from '@/views/search/types'
+import { IProduct } from '@/views/shopping-cart/types'
 
 export const getServerSideProps: GetServerSideProps = async ({ locale, params, req }) => {
   const cookies = req.headers.cookie || ''

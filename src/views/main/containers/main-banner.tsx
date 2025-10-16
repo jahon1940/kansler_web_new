@@ -33,7 +33,7 @@ const MainBanner = () => {
   })
 
   return (
-    <div className="mb-4 lg:mb-10 overflow-hidden lg:rounded-2xl">
+    <div className="mb-4 lg:mb-10 p-4 lg:p-0 overflow-hidden lg:rounded-2xl">
       {posters ? (
         <Carousel
           responsive={responsive}

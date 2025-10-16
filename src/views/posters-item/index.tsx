@@ -13,7 +13,7 @@ import Loader from '@/components/shared/loader'
 import ProductCard from '@/components/shared/product-card'
 import ArrowLeftOutlineIcon from '@/components/icons/arrow-left-outline'
 import type { IListResponse } from '@/types'
-import type { IProduct } from '../search/types'
+import { IProduct } from '../shopping-cart/types'
 
 const PosterItemPage = () => {
   const { query, push } = useRouter()

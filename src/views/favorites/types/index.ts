@@ -1,4 +1,4 @@
-import { IProduct } from '@/views/search/types'
+import { IProduct } from '@/views/shopping-cart/types'
 
 interface IFavorite {
   id: number

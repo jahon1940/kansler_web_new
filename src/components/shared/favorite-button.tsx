@@ -52,14 +52,20 @@ const FavoriteButton: FC<IProps> = (props) => {
   const clickHandler = (e: MouseEvent<HTMLElement>) => {
     e.stopPropagation()
 
-    if (isSignedIn) {
-      if (isFav) {
-        mutateRemoveFromFav()
-      } else {
-        mutateAddToFav()
-      }
+    // if (isSignedIn) {
+    //   if (isFav) {
+    //     mutateRemoveFromFav()
+    //   } else {
+    //     mutateAddToFav()
+    //   }
+    // } else {
+    //   push(ROUTES.LOGIN)
+    // }
+
+    if (isFav) {
+      mutateRemoveFromFav()
     } else {
-      push(ROUTES.LOGIN)
+      mutateAddToFav()
     }
   }
 

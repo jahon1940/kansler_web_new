@@ -9,7 +9,7 @@ import FavoriteButton from '@/components/shared/favorite-button'
 import NoPhoto from '@/assets/nophoto.png'
 
 import type { FC } from 'react'
-import type { IProduct } from '../types'
+import type { IProduct } from '@/views/shopping-cart/types'
 
 const ProductsTableCard: FC<IProduct> = (props) => {
   const { t } = useTranslation()

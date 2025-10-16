@@ -11,8 +11,8 @@ import Loader from '@/components/shared/loader'
 import { getProducts } from '@/views/search/services'
 import { IListResponse } from '@/types'
 import queryString from 'query-string'
-import { IProduct } from '@/views/search/types'
 import ProductCardSkeleton from '@/components/shared/product-card-skeleton'
+import { IProduct } from '@/views/shopping-cart/types'
 
 const SimilarProducts: FC<{ id?: number }> = (props) => {
   const [category, setCategory] = useState<number | undefined>(undefined)
@@ -120,7 +120,7 @@ const SimilarProducts: FC<{ id?: number }> = (props) => {
   }
 
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col gap-2 lg:gap-5">
       <div className="w-full relative rounded-lg duration-200 bg-white dark:bg-dprimary py-4 pl-2">
         {canScrollLeft && (
           <button
@@ -161,7 +161,7 @@ const SimilarProducts: FC<{ id?: number }> = (props) => {
           </button>
         )}
       </div>
-      <div className="grid grid-cols-5 gap-4 w-full">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2 lg:gap-4 w-full">
         {isLoading ? (
           <>
             <ProductCardSkeleton />

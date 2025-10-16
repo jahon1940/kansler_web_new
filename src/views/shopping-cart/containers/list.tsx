@@ -21,6 +21,8 @@ import CartInputStepper from '@/components/shared/cart-input-stepper'
 import type { ICartProduct } from '../types'
 import type { IListResponse } from '@/types'
 import type { ColumnsType } from 'antd/es/table'
+import ProductCard from '@/components/shared/product-card'
+import { useCallback } from 'react'
 
 const ProductsList = () => {
   const { t } = useTranslation('common')
@@ -29,7 +31,7 @@ const ProductsList = () => {
   const {
     data: products,
     fetchNextPage,
-    // isFetchingNextPage,
+    isFetchingNextPage,
     isLoading,
     hasNextPage,
   } = useInfiniteQuery({
@@ -270,6 +272,12 @@ const ProductsList = () => {
       ? [...content, hasNextPage ? { loaderKey: 'loader' } : null].filter(Boolean)
       : []
 
+  const loadMoreItems = useCallback(() => {
+    if (hasNextPage && !isFetchingNextPage) {
+      fetchNextPage()
+    }
+  }, [fetchNextPage, hasNextPage, isFetchingNextPage])
+
   if (content?.length === 0) {
     return <NoProductsFound />
   }
@@ -293,9 +301,21 @@ const ProductsList = () => {
               row: ClickableTableRow,
             },
           }}
-          className="h-full dark:[&_th]:bg-dsecondary [&_td]:border-2 [&_th]:border-2 [&_thead]:sticky dark:[&_.ant-table-container]:border-dborder dark:[&_th]:border-dborder [&_thead]:top-[109px] [&_thead]:z-[1]"
+          className="h-full hidden lg:block dark:[&_th]:bg-dsecondary [&_td]:border-2 [&_th]:border-2 [&_thead]:sticky dark:[&_.ant-table-container]:border-dborder dark:[&_th]:border-dborder [&_thead]:top-[109px] [&_thead]:z-[1]"
         />
       ) : null}
+
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 lg:hidden">
+        {content?.map((product, i) => <ProductCard key={product.id || i} {...product?.product} />)}
+
+        <InView onChange={(inView) => inView && loadMoreItems()}>
+          {({ ref }) => (
+            <div ref={ref} className="text-center min-h-[20px] py-4 col-span-full">
+              {isFetchingNextPage && <Loader />}
+            </div>
+          )}
+        </InView>
+      </div>
     </div>
   )
 }

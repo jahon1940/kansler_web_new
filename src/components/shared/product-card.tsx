@@ -15,9 +15,10 @@ import CartInputStepper from './cart-input-stepper'
 import ProductDetailedModal from './product-detailed-modal'
 
 import type { FC } from 'react'
-import type { IProduct } from '@/views/search/types'
 
 import NoPhoto from '@/assets/nophoto.png'
+import { useMediaQuery } from 'usehooks-ts'
+import { IProduct } from '@/views/shopping-cart/types'
 
 interface IProps extends IProduct {
   small?: boolean
@@ -26,14 +27,16 @@ interface IProps extends IProduct {
 
 const ProductCard: FC<IProps> = (props) => {
   const { t } = useTranslation()
-  const { query } = useRouter()
+  const { query, push } = useRouter()
   const isSignedIn = useAuthStore((state) => state.isSignedIn)
+  const isDesktop = useMediaQuery('(min-width: 1024px)')
   const { setIsOpen, isOpen } = useProductModalStore((store) => store)
 
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   const handleCloseModal = () => {
     setIsModalOpen(false)
+
     // if (pathname !== '/') {
     //   replace(
     //     {
@@ -47,7 +50,11 @@ const ProductCard: FC<IProps> = (props) => {
   }
 
   const handleClick = () => {
-    setIsModalOpen(true)
+    if (isDesktop) {
+      setIsModalOpen(true)
+    } else {
+      push(`/products/${props?.title_slug}`)
+    }
     // if (pathname !== '/') {
     //   replace({ pathname: pathname, query: { ...query, product: props.id } }, undefined, {
     //     scroll: false,
@@ -83,10 +90,8 @@ const ProductCard: FC<IProps> = (props) => {
             width={150}
             height={150}
             src={
-              props?.image_url
-                ? props?.image_url?.includes('http')
-                  ? props.image_url
-                  : API_HOST + props.image_url
+              props?.contractor?.image_url || props?.image_url
+                ? API_HOST + (props?.contractor?.image_url || props?.image_url)
                 : NoPhoto
             }
             className="h-full w-full object-center object-contain"
@@ -104,12 +109,12 @@ const ProductCard: FC<IProps> = (props) => {
 
         <div className="flex flex-1 flex-col mb-2 dark:text-white">
           <span className="text-[12px] font-mono font-thin line-clamp-1">
-            {t('fields:vendor_code.label')}: {props?.vendor_code}
+            {t('fields:vendor_code.label')}: {props?.contractor?.vendor_code || props?.vendor_code}
           </span>
           <span className="text-[14px] line-clamp-2 mb-2 flex-1">{props?.title}</span>
 
           <div className="text-[14px] font-bold">
-            <span className="text-primary dark:text-white">
+            {/* <span className="text-primary dark:text-white">
               {formatAmount(
                 isSignedIn && props?.price_discount !== 0 ? props?.price_discount : props?.price
               )}{' '}
@@ -119,7 +124,11 @@ const ProductCard: FC<IProps> = (props) => {
               <span className="text-secondary-light ml-2 line-through ">
                 {formatAmount(props?.price)} <span className="text-[12px]">{t('common:uzs')}</span>
               </span>
-            ) : null}
+            ) : null} */}
+            <span className={props?.contractor?.price ? 'text-primary' : ' dark:text-white'}>
+              {formatAmount(props?.contractor?.price || props?.price)}{' '}
+              <span className="text-[12px]">{t('common:uzs')}</span>
+            </span>
           </div>
         </div>
         {/* {isSignedIn ? (
@@ -138,7 +147,6 @@ const ProductCard: FC<IProps> = (props) => {
           productId={props?.id}
           inCart={props?.in_cart}
           minQuantity={props?.min_box_quantity}
-          isInStock={props?.max_quantity > 0}
         />
       </div>
 

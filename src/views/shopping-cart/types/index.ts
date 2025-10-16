@@ -24,11 +24,13 @@ interface IProduct {
   packagename: string
   packagecode: string
   title: string
+  title_slug: string
   vendor_code: string
   nds: string
   loaderKey?: 'loader'
   price: number
   price_discount: number
+  retailer_price: number
   measure: string
   description: string
   actual: boolean
@@ -45,22 +47,38 @@ interface IProduct {
   weight: number
   size: string
   image_url: string
+  images: { id: number; image_url: string }[]
   in_fav: boolean
   in_cart: boolean
   has_comment: boolean
-  stocks: string
+  stocks: IStock[]
   contractor: {
-    stock: {
-      id: number
-      name: string
-      address: string
-      phone_number: string
-      longitude: string
-      latitude: string
-    }
-    quantity: number
-    quantity_reserve: number
+    image_url: string
+    brand: string
+    made_in: string
+    classifier_code: string
+    classifier_title: string
+    packagename: string
+    packagecode: string
+    nds: any
+    measure: string
+    description: string
+    vendor_code: string
+    max_quantity: number
+    price: number
+    stocks: IStock[]
   }
+}
+
+interface IStock {
+  stock: {
+    id: number
+    name: string
+  }
+  quantity: number
+  quantity_reserve: number
+  uploaded: boolean
+  active_date: any
 }
 
 interface ICartTotalAmount {
@@ -78,6 +96,7 @@ interface ICategory {
   name: string
   image_url: string
   children: boolean
+  parent?: number
 }
 
 interface IGetProductsParams {

@@ -6,7 +6,7 @@ interface BearState {
 }
 
 const useViewTypeStore = create<BearState>()((set) => ({
-  isTableType: true,
+  isTableType: false,
   setIsTableType: () => set((state) => ({ isTableType: !state.isTableType })),
 }))
 

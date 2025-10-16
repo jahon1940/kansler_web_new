@@ -99,7 +99,8 @@ const CartInputStepper: FC<IProps> = ({
           longButton && !isInCart ? 'justify-between' : 'justify-end'
         )}
       >
-        {!isInStock || (isInCart && pathname !== '/shopping-cart') ? null : (
+        {/* {!isInStock || (isInCart && pathname !== '/shopping-cart') ? null : ( */}
+        {isInCart && pathname !== '/shopping-cart' ? null : (
           <Space.Compact className={longButton ? '' : 'flex-1'}>
             <Button
               size="middle"
@@ -173,7 +174,7 @@ const CartInputStepper: FC<IProps> = ({
           </Space.Compact>
         )}
 
-        {!isInStock ? <MadeToOrder /> : null}
+        {/* {!isInStock ? <MadeToOrder /> : null} */}
 
         {isInCart ? (
           longButton ? (

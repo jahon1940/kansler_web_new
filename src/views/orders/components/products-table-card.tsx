@@ -6,7 +6,7 @@ import CImage from '@/components/ui/cimage'
 import NoPhoto from '@/assets/nophoto.png'
 
 import type { FC } from 'react'
-import type { IProduct } from '@/views/search/types'
+import { IProduct } from '@/views/shopping-cart/types'
 
 const ProductsTableCard: FC<IProduct> = (props) => {
   const { t } = useTranslation()

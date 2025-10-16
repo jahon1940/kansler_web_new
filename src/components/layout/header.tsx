@@ -35,6 +35,8 @@ import DeliveryIcon from '../icons/delivery'
 import TelegramIcon from '../icons/telegram'
 import { PhoneIcon } from 'lucide-react'
 import CatalogMenu from '../shared/catalog-menu'
+import Category2OutlineIcon from '../icons/category-2-outline'
+import Category2BoldIcon from '../icons/category-2-bold'
 
 const ThemeSwitcher = dynamic(() => import('../shared/theme-switcher'), { ssr: false })
 
@@ -46,9 +48,8 @@ const Header: FC = () => {
   const { favoritesCount, cartCount, setCartCount, setFavoritesCount } = useCounterStore()
 
   const { data: counts } = useQuery({
-    queryKey: ['counts', isSignedIn],
+    queryKey: ['counts'],
     queryFn: () => getCounts(),
-    enabled: isSignedIn,
   })
 
   useEffect(() => {
@@ -59,10 +60,10 @@ const Header: FC = () => {
       setFavoritesCount(counts?.favorite_products)
     }
 
-    if (!isSignedIn) {
-      setCartCount(0)
-      setFavoritesCount(0)
-    }
+    // if (!isSignedIn) {
+    //   setCartCount(0)
+    //   setFavoritesCount(0)
+    // }
   }, [counts, isSignedIn])
 
   const links = [
@@ -101,6 +102,36 @@ const Header: FC = () => {
     },
   ]
 
+  const linksM = [
+    { href: '/', icon: <Home2OutlineIcon />, activeIcon: <Home2BoldIcon />, label: 'Main' },
+    {
+      href: '/catalog',
+      icon: <Category2OutlineIcon />,
+      activeIcon: <Category2BoldIcon />,
+      label: 'Categories',
+    },
+
+    {
+      href: '/shopping-cart',
+      icon: <ShoppingCartOutlineIcon />,
+      activeIcon: <ShoppingCartBoldIcon />,
+      label: 'Shopping Cart',
+      count: cartCount,
+    },
+    {
+      href: '/orders',
+      icon: <Bag2OutlineIcon />,
+      activeIcon: <Bag2BoldIcon />,
+      label: 'My orders',
+    },
+    {
+      href: '/profile',
+      icon: <ProfileOutlineIcon />,
+      activeIcon: <ProfileBoldIcon />,
+      label: 'Profile',
+    },
+  ]
+
   const formSubmitHandler = (values: { search: string }) => {
     push({
       pathname: '/search',
@@ -117,7 +148,7 @@ const Header: FC = () => {
 
   return (
     <>
-      <div className="bg-[#E0E2E7] hidden md:block dark:bg-dsecondary text-sm">
+      <div className="bg-[#E0E2E7] hidden lg:block dark:bg-dsecondary text-sm">
         <div className="custom-container flex flex-wrap items-center gap-2 justify-between py-1">
           <ChatDrawer />
 
@@ -151,7 +182,7 @@ const Header: FC = () => {
       <header className="bg-white z-10 dark:bg-dprimary border-b dark:border-dborder sticky top-0 py-[10px] text-black dark:text-white">
         <div className="custom-container">
           <div className="flex flex-wrap items-center justify-between gap-3">
-            <div className="flex flex-wrap items-center flex-1 gap-3">
+            <div className="hidden lg:flex flex-wrap items-center flex-1 gap-3">
               <Link href="/" className="h-[38px] w-[120px] sm:w-[140px] mr-4 sm:mr-10">
                 <Image
                   src="/logo.png"
@@ -162,9 +193,7 @@ const Header: FC = () => {
                 />
               </Link>
 
-              <div className="hidden md:block">
-                <CatalogMenu />
-              </div>
+              <CatalogMenu />
 
               <Form
                 className="flex items-center justify-end md:justify-normal gap-1 flex-1"
@@ -187,15 +216,57 @@ const Header: FC = () => {
                   htmlType="submit"
                   color="default"
                   variant="filled"
-                  className="hidden sm:inline text-[14px] font-medium border border-secondary-light/20 dark:border-dborder dark:bg-dsecondary dark:text-white"
+                  className="text-[14px] font-medium border border-secondary-light/20 dark:border-dborder dark:bg-dsecondary dark:text-white"
                 >
                   {t('actions:search')}
                 </Button>
               </Form>
             </div>
 
-            <nav className="flex p-3 md:p-0 items-center gap-[10px] fixed lg:relative bottom-0 left-0 right-0 bg-white sm:gap-[17px] w-full sm:w-auto justify-between sm:justify-end mt-2 sm:mt-0">
-              {links.map(({ href, icon, label, activeIcon, count }) => (
+            <div className="flex lg:hidden flex-1 gap-2 items-center">
+              <Form
+                className="flex items-center relative justify-end md:justify-normal gap-1 flex-1"
+                form={form}
+                onFinish={formSubmitHandler}
+              >
+                <Form.Item name="title" className="flex-1">
+                  <Input
+                    type="text"
+                    variant="filled"
+                    placeholder={t('actions:search') + '...'}
+                    aria-label="Search"
+                    className="w-full text-[14px] border border-secondary-light/20 dark:border-dborder dark:bg-dsecondary dark:text-white font-medium"
+                  />
+                </Form.Item>
+                <Button
+                  htmlType="submit"
+                  color="default"
+                  size="small"
+                  variant="filled"
+                  className="shrink-0 absolute top-[50%] translate-y-[-50%] right-2 text-[14px] font-medium border border-secondary-light/20 dark:border-dborder dark:bg-dsecondary dark:text-white"
+                  icon={<SearchNormalOutlineIcon className="text-[#616883] dark:text-gray-400" />}
+                />
+              </Form>
+
+              <Link href={'/favorites'} draggable={false} className="relative">
+                <Button
+                  type="text"
+                  className={twMerge(
+                    'text-[24px] md:text-[25px]',
+                    'text-secondary-light lg:text-black dark:text-white'
+                  )}
+                  icon={<HeartOutlineIcon />}
+                />
+                {favoritesCount > 0 ? (
+                  <span className="h-[14px] md:h-[16px] min-w-[14px] md:min-w-[16px] px-1 absolute right-[-5px] top-0 inline-flex items-center justify-center shrink-0 text-[10px] sm:text-xs text-white bg-red-500 rounded-full">
+                    {favoritesCount}
+                  </span>
+                ) : null}
+              </Link>
+            </div>
+
+            <nav className="hidden lg:flex items-center bg-white gap-[17px] justify-end">
+              {links?.map(({ href, icon, label, activeIcon, count }) => (
                 <Link
                   key={href}
                   href={href}
@@ -213,7 +284,35 @@ const Header: FC = () => {
                     )}
                     icon={pathname === href ? activeIcon : icon}
                   />
-                  {isSignedIn && count !== undefined && count > 0 ? (
+                  {count !== undefined && count > 0 ? (
+                    <span className="size-[14px] md:size-[16px] min-w-[14px] md:min-w-[16px] px-1 absolute right-[-5px] top-0 inline-flex items-center justify-center shrink-0 text-[10px] sm:text-xs text-white bg-red-500 rounded-full">
+                      {count}
+                    </span>
+                  ) : null}
+                </Link>
+              ))}
+            </nav>
+
+            <nav className="flex lg:hidden p-3 items-center gap-[10px] fixed bottom-0 left-0 right-0 bg-white w-full justify-between mt-2">
+              {linksM?.map(({ href, icon, label, activeIcon, count }) => (
+                <Link
+                  key={href}
+                  href={href}
+                  aria-label={label}
+                  draggable={false}
+                  className="relative"
+                >
+                  <Button
+                    type="text"
+                    className={twMerge(
+                      'text-[24px] md:text-[25px]',
+                      pathname === href
+                        ? 'text-primary lg:bg-primary-light/20 dark:bg-primary/20'
+                        : 'text-secondary-light lg:text-black dark:text-white'
+                    )}
+                    icon={pathname === href ? activeIcon : icon}
+                  />
+                  {count !== undefined && count > 0 ? (
                     <span className="h-[14px] md:h-[16px] min-w-[14px] md:min-w-[16px] px-1 absolute right-[-5px] top-0 inline-flex items-center justify-center shrink-0 text-[10px] sm:text-xs text-white bg-red-500 rounded-full">
                       {count}
                     </span>

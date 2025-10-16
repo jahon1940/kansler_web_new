@@ -1,5 +1,5 @@
+import { IProduct } from '@/views/shopping-cart/types'
 import type { FC } from 'react'
-import type { IProduct } from '@/views/search/types'
 
 const MeasureTableRow: FC<IProduct> = (props) => {
   return (

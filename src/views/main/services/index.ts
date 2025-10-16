@@ -2,7 +2,7 @@ import api from '@/services/axios'
 
 import type { IAdminStory, IPoster } from '../types'
 import type { IListResponse } from '@/types'
-import type { IProduct } from '@/views/search/types'
+import { IProduct } from '@/views/shopping-cart/types'
 
 export const getPosters = async (params?: any): Promise<IListResponse<IPoster>> => {
   const res: IListResponse<IPoster> = await api({
