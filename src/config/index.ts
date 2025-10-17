@@ -2,6 +2,7 @@ export const defaultLocale = 'ru'
 export const locales = ['ru', 'uz']
 
 export const API_HOST = process.env.NEXT_PUBLIC_API_URL ?? ''
+export const API_HOST_MIREL = process.env.NEXT_PUBLIC_MIREL_API_URL ?? ''
 export const API_VERSION = process.env.NEXT_PUBLIC_API_URL_VERSION ?? ''
 export const API_BASE_URL = `${API_HOST}/${API_VERSION}`
 
