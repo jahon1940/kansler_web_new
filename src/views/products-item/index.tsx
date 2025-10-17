@@ -3,10 +3,10 @@ import { Button, Typography } from 'antd'
 import { useTranslation } from 'next-i18next'
 import { useQuery } from '@tanstack/react-query'
 
-import { API_HOST } from '@/config'
 import { getContractor } from '@/services'
 import useAuthStore from '@/store/auth-store'
 import { getProduct } from '../search/services'
+import getImageUrl from '@/utils/get-image-url'
 import { getAuthCurrent } from '../profile/services'
 import { formatAmount } from '@/utils/format-amount'
 
@@ -18,7 +18,6 @@ import ShareButtonModal from '@/components/shared/share-button-modal'
 import CartInputStepper from '@/components/shared/cart-input-stepper'
 import ArrowLeftOutlineIcon from '@/components/icons/arrow-left-outline'
 
-import NoPhoto from '@/assets/nophoto.png'
 import SimilarProducts from './containers/similar-products'
 
 const { Text } = Typography
@@ -87,8 +86,10 @@ const ProductsItemView = () => {
     },
   ]
 
-  const image = data?.contractor?.image_url || data?.image_url
-  // src={image ? API_HOST + image : NoPhoto}
+  const image = getImageUrl({
+    url: data?.contractor?.image_url || data?.image_url,
+    isContractor: Boolean(data?.contractor?.image_url),
+  })
 
   return (
     <div className="custom-container py-6 w-full">
@@ -116,7 +117,7 @@ const ProductsItemView = () => {
                 alt="main image"
                 width={300}
                 height={300}
-                src={image ? API_HOST + image : NoPhoto}
+                src={image}
                 className="w-full h-full object-contain"
               />
             </div>
@@ -125,7 +126,7 @@ const ProductsItemView = () => {
                 alt="main image"
                 width={300}
                 height={300}
-                src={image ? API_HOST + image : NoPhoto}
+                src={image}
                 className="w-full h-full object-contain"
               />
             </div>
@@ -134,7 +135,7 @@ const ProductsItemView = () => {
                 alt="main image"
                 width={300}
                 height={300}
-                src={image ? API_HOST + image : NoPhoto}
+                src={image}
                 className="w-full h-full object-contain"
               />
             </div>
@@ -143,7 +144,7 @@ const ProductsItemView = () => {
                 alt="main image"
                 width={300}
                 height={300}
-                src={image ? API_HOST + image : NoPhoto}
+                src={image}
                 className="w-full h-full object-contain"
               />
             </div>
@@ -152,7 +153,7 @@ const ProductsItemView = () => {
                 alt="main image"
                 width={300}
                 height={300}
-                src={image ? API_HOST + image : NoPhoto}
+                src={image}
                 className="w-full h-full object-contain"
               />
             </div>
@@ -162,7 +163,10 @@ const ProductsItemView = () => {
               alt="main image"
               width={300}
               height={300}
-              src={image ? API_HOST + image : NoPhoto}
+              src={getImageUrl({
+                url: data?.contractor?.image_url || data?.image_url,
+                isContractor: Boolean(data?.contractor?.image_url),
+              })}
               className="w-full h-full object-contain"
             />
           </div>

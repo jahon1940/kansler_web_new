@@ -3,7 +3,6 @@ import { twMerge } from 'tailwind-merge'
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'next-i18next'
 
-import { API_HOST } from '@/config'
 import useAuthStore from '@/store/auth-store'
 import { formatAmount } from '@/utils/format-amount'
 import useProductModalStore from '@/store/product-modal-store'
@@ -11,12 +10,12 @@ import useProductModalStore from '@/store/product-modal-store'
 import CImage from '../ui/cimage'
 import MadeToOrder from './made-to-order'
 import FavoriteButton from './favorite-button'
+import getImageUrl from '@/utils/get-image-url'
 import CartInputStepper from './cart-input-stepper'
 import ProductDetailedModal from './product-detailed-modal'
 
 import type { FC } from 'react'
 
-import NoPhoto from '@/assets/nophoto.png'
 import { useMediaQuery } from 'usehooks-ts'
 import { IProduct } from '@/views/shopping-cart/types'
 
@@ -89,11 +88,10 @@ const ProductCard: FC<IProps> = (props) => {
             alt="product image"
             width={150}
             height={150}
-            src={
-              props?.contractor?.image_url || props?.image_url
-                ? API_HOST + (props?.contractor?.image_url || props?.image_url)
-                : NoPhoto
-            }
+            src={getImageUrl({
+              url: props?.contractor?.image_url || props?.image_url,
+              isContractor: Boolean(props?.contractor?.image_url),
+            })}
             className="h-full w-full object-center object-contain"
             loading="lazy"
           />

@@ -1,11 +1,9 @@
 import { useTranslation } from 'next-i18next'
 
-import { API_HOST } from '@/config'
-
 import CImage from '@/components/ui/cimage'
 import useAuthStore from '@/store/auth-store'
 
-import NoPhoto from '@/assets/nophoto.png'
+import getImageUrl from '@/utils/get-image-url'
 import FavoriteButton from '@/components/shared/favorite-button'
 
 import type { FC } from 'react'
@@ -15,13 +13,16 @@ const ProductsTableCard: FC<IProduct> = (props) => {
   const { t } = useTranslation()
   const isSignedIn = useAuthStore((state) => state.isSignedIn)
 
-  const image = props?.contractor?.image_url || props?.image_url
+  const image = getImageUrl({
+    url: props?.contractor?.image_url || props?.image_url,
+    isContractor: Boolean(props?.contractor?.image_url),
+  })
 
   return (
     <div className="flex items-center gap-3">
       <div className="size-[75px] relative outline-none shrink-0 bg-background-light rounded-lg overflow-hidden">
         <CImage
-          src={image ? API_HOST + image : NoPhoto}
+          src={image}
           alt={props?.title}
           width={50}
           height={50}

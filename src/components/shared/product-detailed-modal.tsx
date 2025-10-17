@@ -3,8 +3,6 @@ import { useTranslation } from 'next-i18next'
 import { Button, Modal, Typography } from 'antd'
 import { useQuery } from '@tanstack/react-query'
 
-import { API_HOST } from '@/config'
-import { getContractor } from '@/services'
 import useAuthStore from '@/store/auth-store'
 import { formatAmount } from '@/utils/format-amount'
 import { getAuthCurrent } from '@/views/profile/services'
@@ -12,12 +10,11 @@ import { getAuthCurrent } from '@/views/profile/services'
 import CImage from '../ui/cimage'
 import MadeToOrder from './made-to-order'
 import FavoriteButton from './favorite-button'
+import getImageUrl from '@/utils/get-image-url'
 import ShareButtonModal from './share-button-modal'
 import CartInputStepper from './cart-input-stepper'
 // import CartInputStepper from './cart-input-stepper'
 import CloseSquareOutlineIcon from '../icons/close-square-outline'
-
-import NoPhoto from '@/assets/nophoto.png'
 
 import type { FC } from 'react'
 import type { IProduct } from '@/views/shopping-cart/types'
@@ -88,11 +85,10 @@ const ProductDetailedModal: FC<IProps> = (props) => {
                       alt="main image"
                       width={300}
                       height={300}
-                      src={
-                        props?.contractor?.image_url || props?.image_url
-                          ? API_HOST + (props?.contractor?.image_url || props?.image_url)
-                          : NoPhoto
-                      }
+                      src={getImageUrl({
+                        url: props?.contractor?.image_url || props?.image_url,
+                        isContractor: Boolean(props?.contractor?.image_url),
+                      })}
                       className="w-full h-full object-contain"
                     />
                   </div>
@@ -101,11 +97,10 @@ const ProductDetailedModal: FC<IProps> = (props) => {
                       alt="main image"
                       width={300}
                       height={300}
-                      src={
-                        props?.contractor?.image_url || props?.image_url
-                          ? API_HOST + (props?.contractor?.image_url || props?.image_url)
-                          : NoPhoto
-                      }
+                      src={getImageUrl({
+                        url: props?.contractor?.image_url || props?.image_url,
+                        isContractor: Boolean(props?.contractor?.image_url),
+                      })}
                       className="w-full h-full object-contain"
                     />
                   </div>
@@ -114,11 +109,10 @@ const ProductDetailedModal: FC<IProps> = (props) => {
                       alt="main image"
                       width={300}
                       height={300}
-                      src={
-                        props?.contractor?.image_url || props?.image_url
-                          ? API_HOST + (props?.contractor?.image_url || props?.image_url)
-                          : NoPhoto
-                      }
+                      src={getImageUrl({
+                        url: props?.contractor?.image_url || props?.image_url,
+                        isContractor: Boolean(props?.contractor?.image_url),
+                      })}
                       className="w-full h-full object-contain"
                     />
                   </div>
@@ -127,11 +121,10 @@ const ProductDetailedModal: FC<IProps> = (props) => {
                       alt="main image"
                       width={300}
                       height={300}
-                      src={
-                        props?.contractor?.image_url || props?.image_url
-                          ? API_HOST + (props?.contractor?.image_url || props?.image_url)
-                          : NoPhoto
-                      }
+                      src={getImageUrl({
+                        url: props?.contractor?.image_url || props?.image_url,
+                        isContractor: Boolean(props?.contractor?.image_url),
+                      })}
                       className="w-full h-full object-contain"
                     />
                   </div>
@@ -140,11 +133,10 @@ const ProductDetailedModal: FC<IProps> = (props) => {
                       alt="main image"
                       width={300}
                       height={300}
-                      src={
-                        props?.contractor?.image_url || props?.image_url
-                          ? API_HOST + (props?.contractor?.image_url || props?.image_url)
-                          : NoPhoto
-                      }
+                      src={getImageUrl({
+                        url: props?.contractor?.image_url || props?.image_url,
+                        isContractor: Boolean(props?.contractor?.image_url),
+                      })}
                       className="w-full h-full object-contain"
                     />
                   </div>
@@ -161,11 +153,10 @@ const ProductDetailedModal: FC<IProps> = (props) => {
                       alt="main image"
                       width={300}
                       height={300}
-                      src={
-                        props?.contractor?.image_url || props?.image_url
-                          ? API_HOST + (props?.contractor?.image_url || props?.image_url)
-                          : NoPhoto
-                      }
+                      src={getImageUrl({
+                        url: props?.contractor?.image_url || props?.image_url,
+                        isContractor: Boolean(props?.contractor?.image_url),
+                      })}
                       className="w-full h-full object-contain"
                     />
                   </div>
